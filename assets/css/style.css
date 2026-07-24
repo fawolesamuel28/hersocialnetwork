@@ -740,14 +740,29 @@ section .photo-placeholder.light {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 28px;
+  padding-top: 52px;
   height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 .prog-card .num {
+  position: absolute;
+  top: -22px;
+  right: -22px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
   font-family: "Fraunces", serif;
-  font-size: 1.6rem;
-  color: var(--marigold-dark);
-  margin-bottom: 0.3em;
-  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 22px;
+  padding-left: 8px;
+  box-shadow: 0 4px 16px rgba(27, 75, 71, 0.22);
 }
 .prog-card h3 {
   margin-bottom: 0.4em;
