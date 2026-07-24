@@ -1561,3 +1561,181 @@ footer a:hover {
     transform: translate(0, 22.5px);
   }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE — max-width: 640px
+   Keeps desktop untouched; mobile flows top-to-bottom
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* ── Typography scale-down ── */
+  h1 { font-size: 2.1rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.15rem; }
+
+  /* ── Global spacing ── */
+  section { padding: 52px 0; }
+  .wrap { padding: 0 18px; }
+
+  /* ── Navigation ── */
+  header#top { padding: 10px 16px; }
+  .nav-row { padding: 8px 12px 8px 16px; }
+
+  /* ── Hero ── */
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+  .hero-headline {
+    font-size: clamp(2rem, 9vw, 3rem);
+    margin: 14px auto 0.4em;
+  }
+  /* Inline photo pill inside headline — pull down below */
+  .headline-photo {
+    display: block;
+    width: 72%;
+    max-width: 260px;
+    aspect-ratio: 3 / 1;
+    margin: 16px auto 0;
+    transform: none;
+    border-radius: 999px;
+  }
+  .hero .lede {
+    font-size: 1rem;
+    margin-bottom: 1.6em;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 0 8px;
+  }
+  .hero-ctas .btn,
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-outline {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* ── Location badge widget ── */
+  .btn-wrapper {
+    padding: 1rem 2.4rem;
+    min-width: auto;
+    width: 90%;
+    margin-bottom: 36px;
+  }
+
+  /* ── Intro two-column ── */
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* ── Stats band ── */
+  .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .stat {
+    border-left: none;
+    border-top: 2px solid rgba(255,255,255,0.2);
+    padding-left: 0;
+    padding-top: 16px;
+  }
+  .stat:first-child { border-top: none; padding-top: 0; }
+  .stat .figure { font-size: 2.2rem; }
+
+  /* ── Events grid ── */
+  .grid-3-events {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .event-card { padding: 22px; }
+
+  /* ── Programmes 4-col ── */
+  .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* ── News / updates grid ── */
+  .updates-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .update-card .photo-placeholder { aspect-ratio: 1 / 1; }
+
+  /* ── Voices / quotes ── */
+  .quote-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .quote-card { padding: 22px 20px; }
+  .quote-card p { font-size: 1.05rem; }
+
+  /* ── CTA band ── */
+  .cta-band {
+    padding: 36px 22px;
+    border-radius: 20px;
+  }
+  .cta-band .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .cta-band .hero-ctas .btn,
+  .cta-band .hero-ctas .btn-primary,
+  .cta-band .hero-ctas .btn-outline {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* ── Newsletter / Loop card ── */
+  .newsletter {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+    gap: 20px;
+    border-radius: 18px;
+  }
+
+  /* ── Contact section ── */
+  .contact-section { padding: 52px 0; }
+  .contact-card {
+    grid-template-columns: 1fr;
+    border-radius: 20px;
+  }
+  .contact-left {
+    padding: 32px 22px;
+    gap: 24px;
+  }
+  .contact-right { padding: 28px 22px; }
+  .contact-left-content h2 { font-size: 1.6rem; }
+  .contact-quote-card { padding: 18px; }
+  .contact-quote-card .quote-text { font-size: 0.95rem; }
+  .contact-tabs { margin-bottom: 20px; }
+  .contact-submit-btn { padding: 14px 24px; }
+  .form-grid { grid-template-columns: 1fr; gap: 0; }
+
+  /* ── Split cards ── */
+  .split-card { grid-template-columns: 1fr; }
+  .split-card > div { padding: 28px 22px; }
+
+  /* ── Footer ── */
+  footer { padding: 48px 0 24px; }
+  .foot-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .foot-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+}
+
+/* ── Very small phones (≤380px) ── */
+@media (max-width: 380px) {
+  .updates-grid { grid-template-columns: 1fr; }
+  .hero-headline { font-size: 1.9rem; }
+}
