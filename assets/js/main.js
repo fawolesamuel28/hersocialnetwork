@@ -72,11 +72,11 @@ async function renderLiveEvents() {
 
     container.innerHTML = events.map(evt => `
       <div class="event-card">
-        <span class="status-pill ${evt.statusClass || 'status-ongoing'}">${escapeSafe(evt.status)}</span>
+        <span class="status-pill ${evt.statusclass || evt.statusClass || 'status-ongoing'}">${escapeSafe(evt.status)}</span>
         <h3>${escapeSafe(evt.title)}</h3>
         <p>${escapeSafe(evt.desc)}</p>
         <p class="form-note">Date: ${escapeSafe(evt.date)}</p>
-        <a class="btn btn-outline" href="${evt.linkUrl || '#contact'}">${escapeSafe(evt.linkText || 'Register interest')}</a>
+        <a class="btn btn-outline" href="${evt.linkurl || evt.linkUrl || '#contact'}">${escapeSafe(evt.linktext || evt.linkText || 'Register interest')}</a>
       </div>
     `).join('');
   } catch (e) {

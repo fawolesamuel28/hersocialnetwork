@@ -444,11 +444,11 @@
           await addEvent({
             title,
             status: statusVal[0],
-            statusClass: statusVal[1],
-            desc,
+            statusclass: statusVal[1],
+            "desc": desc,
             date,
-            linkText,
-            linkUrl: '#contact'
+            linktext: linkText,
+            linkurl: '#contact'
           });
           document.getElementById('add-event-form').reset();
           await renderAdminEventsList();
@@ -519,7 +519,7 @@
           list.innerHTML = events.map(item => `
             <div class="list-item-card">
               <div class="list-item-info">
-                <h4>${escapeHTML(item.title)} <span class="status-pill ${item.statusClass}" style="font-size:0.75rem; padding: 2px 8px;">${item.status}</span></h4>
+                <h4>${escapeHTML(item.title)} <span class="status-pill ${item.statusclass || item.statusClass}" style="font-size:0.75rem; padding: 2px 8px;">${item.status}</span></h4>
                 <p>📅 ${escapeHTML(item.date)} &bull; ${escapeHTML(item.desc)}</p>
               </div>
               <button type="button" class="admin-btn-danger" onclick="deleteEvent('${item.id}')">Delete</button>
