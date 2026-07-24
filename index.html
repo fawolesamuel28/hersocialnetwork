@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+    />
+    <!-- NOTE: the CSP above is a best-effort meta-tag version. For real protection this
+      same policy should also be set as an HTTP response header by whoever hosts the
+      site (Netlify/Vercel/WordPress security plugin) - meta tags can't set every
+     directive (e.g. frame-ancestors is ignored in meta and must be set server-side). -->
+
+    <title>
+      Her Social Network CIC | Empowering Women in Luton &amp; Bedfordshire
+    </title>
+    <meta
+      name="description"
+      content="Her Social Network CIC helps women across Luton and Bedfordshire build confidence, economic independence and community connection through free workshops and events, led by founder Gloria Adeyera."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://hersocialnetworkcic.uk/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Her Social Network CIC" />
+    <meta
+      property="og:title"
+      content="Her Social Network CIC | Empowering Women in Luton & Bedfordshire"
+    />
+    <meta
+      property="og:description"
+      content="Personal growth, economic independence and community connection for women across Luton, Bedfordshire and Hertfordshire."
+    />
+    <meta property="og:url" content="https://hersocialnetworkcic.uk/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- SEO: NGO schema - swap PLACEHOLDER values once available (logo file, CIC number, real socials) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "Her Social Network CIC",
+        "url": "https://hersocialnetworkcic.uk/",
+        "logo": "https://hersocialnetworkcic.uk/PLACEHOLDER-logo.png",
+        "description": "A community interest company providing free programmes in personal growth, economic independence and community connection for women in Luton and Bedfordshire.",
+        "founder": {
+          "@type": "Person",
+          "name": "Gloria Adeyera"
+        },
+        "areaServed": ["Luton", "Bedfordshire", "Hertfordshire", "Stevenage"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Second Floor, 3 & 4 Viewpoint Office Village, Babbage Road",
+          "addressLocality": "Stevenage",
+          "addressRegion": "Hertfordshire",
+          "postalCode": "SG1 2EQ",
+          "addressCountry": "GB"
+        },
+        "telephone": "+44 7459 022997"
+      }
+    </script>
+
+    <!-- SEO: Event schema - dates/registration links are placeholders until confirmed -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Monthly Empowerment Session",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Her Social Network CIC",
+          "address": "Stevenage, Hertfordshire, UK"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Her Social Network CIC",
+          "url": "https://hersocialnetworkcic.uk/"
+        },
+        "startDate": "PLACEHOLDER-2026-08-01T18:00:00+01:00"
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header id="top">
+      <div class="nav-row">
+        <a class="logo" href="#top">
+          <svg class="rings" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle
+              cx="16"
+              cy="20"
+              r="11"
+              stroke="#E2992F"
+              stroke-width="2.4"
+            />
+            <circle
+              cx="25"
+              cy="20"
+              r="11"
+              stroke="#1B4B47"
+              stroke-width="2.4"
+            />
+          </svg>
+          <span>Her Social Network</span>
+        </a>
+        <nav class="primary" id="primary-nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#programmes">Programmes</a>
+          <a href="#updates">News &amp; Events</a>
+          <a href="#events">Get Involved</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-right">
+          <button
+            class="mobile-toggle"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+            onclick="
+              const n = document.getElementById('primary-nav');
+              const open = n.classList.toggle('open');
+              this.setAttribute('aria-expanded', open);
+            "
+          >
+            &#9776;
+          </button>
+          <a
+            class="icon-btn"
+            href="tel:+447459022997"
+            aria-label="Call Her Social Network"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+          </a>
+          <a class="btn btn-primary" href="#events">
+            <span class="text">Join Us</span>
+            <span class="svg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="38" height="15" viewBox="0 0 38 15" fill="none">
+                <path fill="currentColor" d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.15-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.92.439-1.673.743-2.221.87-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.07.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.95.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.15-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.02-.151-.135-.198-.895-.046-.734.034-1.887.38-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.08-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.01.013-.01.013.781.624zm5.204-3.381c.989-.413 1.791-.42 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" aria-label="Introduction">
+        <div class="wrap" style="max-width: 920px">
+          <!-- From Uiverse.io by dexter-st --> 
+          <div class="btn-wrapper">
+            <button class="btn" type="button" aria-label="Luton &amp; Bedfordshire, UK">
+              <span class="frame">
+                <span class="point top left"></span>
+                <span class="point top right"></span>
+                <span class="point bottom left"></span>
+                <span class="point bottom right"></span>
+              </span>
+              <span class="txt-box">
+                <span class="txt">Luton &amp; Bedfordshire</span>
+                <span class="txt">Stevenage &amp; Hertfordshire</span>
+              </span>
+            </button>
+            <div class="txt-secondary" id="hint1">Empowering Women in Luton &amp; Beds</div>
+            <div class="txt-secondary" id="hint2">Her Social Network CIC</div>
+          </div>
+          <h1 class="hero-headline">
+            Grow
+            <span class="headline-photo"
+              ><img
+                src="assets/images/hero.jpg"
+                alt="Two women embracing at a Her Social Network session"
+            /></span>
+            Thrive<br />Together, We Rise
+          </h1>
+          <p class="lede">
+            Her Social Network CIC helps women across Luton and Bedfordshire
+            build confidence, develop practical skills and improve wellbeing
+            regardless of background or circumstance.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#events">
+              <span class="text">Join a session</span>
+              <span class="svg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="15" viewBox="0 0 38 15" fill="none">
+                  <path fill="currentColor" d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.15-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.92.439-1.673.743-2.221.87-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.07.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.95.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.15-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.02-.151-.135-.198-.895-.046-.734.034-1.887.38-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.08-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.01.013-.01.013.781.624zm5.204-3.381c.989-.413 1.791-.42 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z"/>
+                </svg>
+              </span>
+            </a>
+            <a class="btn btn-outline" href="#contact"
+              >I need support <span class="btn-arrow">&#8599;</span></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- INTRO STATEMENT -->
+      <section aria-label="Our purpose">
+        <div class="wrap intro">
+          <p class="eyebrow">Our purpose</p>
+          <div class="lines">
+            <p>
+              We believe every woman deserves access to opportunities that build
+              confidence, develop practical skills and improve wellbeing.
+            </p>
+            <p>
+              We provide accessible programmes that help women overcome barriers
+              to employment, education and entrepreneurship.
+            </p>
+            <p>
+              We create a safe, nourishing space where women can learn, grow and
+              thrive together.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT / MISSION / VISION -->
+      <section id="about" aria-label="About us">
+        <div class="wrap">
+          <p class="eyebrow">About our organisation</p>
+          <h2 style="max-width: 20ch">
+            Founded by Gloria Adeyera, for the women of Luton and Bedfordshire
+          </h2>
+          <p style="max-width: 70ch; font-size: 1.05rem">
+            Her Social Network CIC was established to improve the lives of women
+            across Luton and Bedfordshire by creating opportunities for personal
+            growth, economic independence and community connection. Our mission
+            is to provide accessible programmes that help women overcome
+            barriers to employment, education and entrepreneurship while
+            creating a supportive network where they can learn, grow and thrive.
+          </p>
+
+          <div class="split-card" style="margin-top: 36px">
+            <div>
+              <h3>Our mission</h3>
+              <p>
+                To provide accessible programmes that help women overcome
+                barriers to employment, education and entrepreneurship, in a
+                safe, nourishing environment where women can nurture each other,
+                learn and grow together.
+              </p>
+            </div>
+            <div class="on-teal">
+              <h3>Our vision</h3>
+              <p>
+                To become a trusted community organisation that equips women
+                with the confidence, skills and support needed to improve their
+                lives, strengthen their families and contribute positively to
+                their local communities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMMES -->
+      <section
+        id="programmes"
+        style="background: var(--stone-deep)"
+        aria-label="What we do"
+      >
+        <div class="wrap">
+          <p class="eyebrow">What we do</p>
+          <h2 style="max-width: 22ch; margin-bottom: 0.9em">
+            Purpose-built programmes for every stage of your journey
+          </h2>
+          <div class="grid-4">
+            <div class="prog-card">
+              <span class="num">01</span>
+              <h3>Personal Growth &amp; Confidence</h3>
+              <p>
+                Overcoming internal barriers and building the self-belief needed
+                to pursue new goals.
+              </p>
+            </div>
+            <div class="prog-card">
+              <span class="num">02</span>
+              <h3>Economic Independence</h3>
+              <p>
+                Practical skills for the modern workforce, including
+                entrepreneurship training and employment support.
+              </p>
+            </div>
+            <div class="prog-card">
+              <span class="num">03</span>
+              <h3>Community Connection</h3>
+              <p>
+                A supportive network where women can learn and laugh together as
+                an authentic community.
+              </p>
+            </div>
+            <div class="prog-card">
+              <span class="num">04</span>
+              <h3>Health &amp; Wellbeing</h3>
+              <p>
+                Holistic sessions focused on improving overall quality of life.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMPACT STATS (placeholders) -->
+      <section class="stats-band" aria-label="Our impact">
+        <div class="wrap">
+          <p class="eyebrow">Our impact</p>
+          <h2>Building momentum, one session at a time</h2>
+          <div class="grid-3">
+            <div class="stat">
+              <span class="figure">PLACEHOLDER</span>
+              <span class="label">Women supported to date</span>
+              <span class="placeholder-flag">Add real figure</span>
+            </div>
+            <div class="stat">
+              <span class="figure">PLACEHOLDER</span>
+              <span class="label">Workshops &amp; sessions run</span>
+              <span class="placeholder-flag">Add real figure</span>
+            </div>
+            <div class="stat">
+              <span class="figure">PLACEHOLDER</span>
+              <span class="label">Local partners &amp; supporters</span>
+              <span class="placeholder-flag">Add real figure</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENTS -->
+      <section id="events" aria-label="Upcoming events and workshops">
+        <div class="wrap">
+          <p class="eyebrow">Get involved</p>
+          <h2 style="max-width: 22ch; margin-bottom: 0.3em">
+            Upcoming events &amp; workshops
+          </h2>
+          <p style="max-width: 65ch; margin-bottom: 36px">
+            Inspired by successful women's networks like Infinite Women and Her
+            Web Impact, we run regular sessions for women to get together, share
+            skills and have fun.
+          </p>
+          <!-- Dynamic events rendered by main.js from localStorage/admin dashboard -->
+          <div class="grid-3-events" id="events-container"></div>
+        </div>
+      </section>
+
+      <!-- VOICES -->
+      <section id="voices" class="voices" aria-label="What our community says">
+        <div class="wrap">
+          <p class="eyebrow">Voices</p>
+          <h2 style="max-width: 20ch">What our community says</h2>
+          <div class="quote-grid">
+            <div class="quote-card">
+              <p>
+                &ldquo;A safe and supportive environment to share knowledge and
+                encourage personal growth.&rdquo;
+              </p>
+              <cite
+                >&mdash; Participant, name PLACEHOLDER (add with
+                permission)</cite
+              >
+            </div>
+            <div class="quote-card">
+              <p>
+                &ldquo;Wonderful, insightful organisation bringing women
+                together to learn and laugh together.&rdquo;
+              </p>
+              <cite
+                >&mdash; Participant, name PLACEHOLDER (add with
+                permission)</cite
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMMUNITY NEWS / UPDATES -->
+      <section id="updates" aria-label="Community news and updates">
+        <div class="wrap">
+          <div class="updates-head">
+            <span class="pill-label">Community News</span>
+            <h2>Stay Informed &mdash; The Latest From Her Social Network</h2>
+            <a class="see-all" href="#"
+              >See all <span class="btn-arrow">&#8599;</span></a
+            >
+          </div>
+
+          <!-- Dynamic news rendered by main.js from localStorage/admin dashboard -->
+          <div class="updates-grid" id="news-container"></div>
+        </div>
+      </section>
+
+      <!-- CTA + NEWSLETTER -->
+      <section aria-label="Join us">
+        <div class="wrap" style="display: grid; gap: 28px">
+          <div class="cta-band">
+            <h2>Together we grow further</h2>
+            <p>
+              Whether you're looking to join a session, volunteer your time, or
+              support our work &mdash; there's a place for you at Her Social
+              Network.
+            </p>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="#events">
+                <span class="text">Join a session</span>
+                <span class="svg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="38" height="15" viewBox="0 0 38 15" fill="none">
+                    <path fill="currentColor" d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.15-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.92.439-1.673.743-2.221.87-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.07.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.95.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.15-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.02-.151-.135-.198-.895-.046-.734.034-1.887.38-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.08-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.01.013-.01.013.781.624zm5.204-3.381c.989-.413 1.791-.42 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z"/>
+                  </svg>
+                </span>
+              </a>
+              <a class="btn btn-outline" href="#contact"
+                >Volunteer or partner with us</a
+              >
+            </div>
+          </div>
+
+          <div class="newsletter">
+            <div class="newsletter-info">
+              <h3 style="margin-bottom: 0.3em">Stay in the loop</h3>
+              <p style="margin-bottom: 1.2em; color: #4a5450; font-size: 0.95rem">
+                Get monthly session dates and workshop announcements straight to
+                your inbox.
+              </p>
+              <button class="btn btn-primary" type="submit" form="newsletter-form">
+                <span class="text">Sign up</span>
+                <span class="svg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="38" height="15" viewBox="0 0 38 15" fill="none">
+                    <path fill="currentColor" d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.15-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.92.439-1.673.743-2.221.87-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.07.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.95.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.15-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.02-.151-.135-.198-.895-.046-.734.034-1.887.38-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.08-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.01.013-.01.013.781.624zm5.204-3.381c.989-.413 1.791-.42 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z"/>
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <form id="newsletter-form" action="#" method="post" aria-label="Newsletter signup">
+              <div class="field-row">
+                <label class="visually-hidden" for="nl-name">First name</label>
+                <input
+                  type="text"
+                  id="nl-name"
+                  name="first_name"
+                  placeholder="First name"
+                  required
+                  autocomplete="given-name"
+                />
+                <label class="visually-hidden" for="nl-email"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  id="nl-email"
+                  name="email"
+                  placeholder="Email address"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <p class="form-note">
+                We'll only use your details to send you updates from Her Social
+                Network CIC. Unsubscribe anytime.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION (Customized from sample design) -->
+      <section id="contact" class="contact-section" aria-label="Contact us">
+        <div class="wrap">
+          <div class="contact-card">
+            <!-- LEFT PANEL: Dark Teal Brand Container -->
+            <div class="contact-left">
+              <div class="contact-brand">
+                <svg
+                  width="34"
+                  height="34"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="16"
+                    cy="20"
+                    r="11"
+                    stroke="#E2992F"
+                    stroke-width="2.4"
+                  />
+                  <circle
+                    cx="25"
+                    cy="20"
+                    r="11"
+                    stroke="#FFFFFF"
+                    stroke-width="2.4"
+                  />
+                </svg>
+                <span>Her Social Network CIC</span>
+              </div>
+
+              <div class="contact-left-content">
+                <h2>Connect with our team</h2>
+                <p>
+                  Our team is ready to help you bring your goals to life. Whether you're planning to join a session, seeking support, or looking to partner with us across Luton and Bedfordshire, we provide personalized guidance tailored to you.
+                </p>
+              </div>
+
+              <div class="contact-quote-card">
+                <div class="quote-header">
+                  <span class="quote-logo">Her Social Network</span>
+                </div>
+                <blockquote class="quote-text">
+                  &ldquo;Her Social Network gave me a safe, uplifting community where I built the confidence and practical skills to thrive.&rdquo;
+                </blockquote>
+                <cite class="quote-author">&mdash; Her Social Network CIC Participant</cite>
+              </div>
+            </div>
+
+            <!-- RIGHT PANEL: Interactive Form Card -->
+            <div class="contact-right">
+              <div class="contact-tabs" role="tablist" aria-label="Contact method">
+                <button
+                  type="button"
+                  class="tab-btn active"
+                  role="tab"
+                  aria-selected="true"
+                  id="tab-email"
+                  onclick="switchContactTab('email')"
+                >
+                  Contact via email
+                </button>
+                <button
+                  type="button"
+                  class="tab-btn"
+                  role="tab"
+                  aria-selected="false"
+                  id="tab-call"
+                  onclick="switchContactTab('call')"
+                >
+                  Request a call
+                </button>
+              </div>
+
+              <form id="contact-form" action="#" method="post" aria-label="Contact form">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="c-firstname">Your first name</label>
+                    <input
+                      type="text"
+                      id="c-firstname"
+                      name="first_name"
+                      placeholder="Enter your first name"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="c-lastname">Your last name</label>
+                    <input
+                      type="text"
+                      id="c-lastname"
+                      name="last_name"
+                      placeholder="Enter your last name"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="c-email">Email</label>
+                  <input
+                    type="email"
+                    id="c-email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+
+                <div class="form-group" id="phone-group" style="display: none;">
+                  <label for="c-phone">Phone number</label>
+                  <input
+                    type="tel"
+                    id="c-phone"
+                    name="phone"
+                    placeholder="Enter your phone number (e.g. 07459 022997)"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="c-message" id="message-label">How can we help?</label>
+                  <textarea
+                    id="c-message"
+                    name="message"
+                    rows="4"
+                    placeholder="Tell us a little about how we can support you..."
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary contact-submit-btn">
+                  <span class="text" id="submit-text">Send message</span>
+                  <span class="svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="15" viewBox="0 0 38 15" fill="none">
+                      <path fill="currentColor" d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.15-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.92.439-1.673.743-2.221.87-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.07.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.95.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.15-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.02-.151-.135-.198-.895-.046-.734.034-1.887.38-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.08-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.01.013-.01.013.781.624zm5.204-3.381c.989-.413 1.791-.42 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z"/>
+                    </svg>
+                  </span>
+                </button>
+
+                <p class="form-disclaimer">
+                  By clicking on <strong id="disclaimer-btn-name">&ldquo;Send message&rdquo;</strong> button, you agree to our <a href="#privacy">Privacy Policy</a>.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" aria-label="Footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          <div>
+            <div class="foot-logo">
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 40 40"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="16"
+                  cy="20"
+                  r="11"
+                  stroke="#E2992F"
+                  stroke-width="2.4"
+                />
+                <circle
+                  cx="25"
+                  cy="20"
+                  r="11"
+                  stroke="#FFFFFF"
+                  stroke-width="2.4"
+                />
+              </svg>
+              <strong
+                style="color: #fff; font-family: &quot;Fraunces&quot;, serif"
+                >Her Social Network</strong
+              >
+            </div>
+            <p style="max-width: 34ch; font-size: 0.9rem">
+              A community interest company supporting women across Luton,
+              Bedfordshire and Hertfordshire.
+            </p>
+            <p style="font-size: 0.8rem; color: #9faaa5">
+              CIC registration number: PLACEHOLDER
+            </p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#programmes">Programmes</a></li>
+              <li><a href="#events">Events</a></li>
+              <li><a href="#voices">Voices</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li>Founder: Gloria Adeyera</li>
+              <li><a href="tel:+447459022997">07459 022997</a></li>
+              <li>
+                <a href="mailto:PLACEHOLDER@hersocialnetworkcic.uk"
+                  >PLACEHOLDER@hersocialnetworkcic.uk</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4>Office</h4>
+            <ul>
+              <li>Second Floor, 3 &amp; 4 Viewpoint Office Village</li>
+              <li>Babbage Road, Stevenage</li>
+              <li>Hertfordshire, SG1 2EQ</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="foot-bottom">
+          <p>&copy; 2026 Her Social Network CIC. All rights reserved.</p>
+          <div class="socials" aria-label="Social media links">
+            <a
+              href="#"
+              rel="noopener noreferrer"
+              aria-label="Facebook (placeholder link)"
+              >f</a
+            >
+            <a
+              href="#"
+              rel="noopener noreferrer"
+              aria-label="Instagram (placeholder link)"
+              >ig</a
+            >
+            <a
+              href="#"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn (placeholder link)"
+              >in</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </body>
+</html>
