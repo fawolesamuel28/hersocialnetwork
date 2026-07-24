@@ -818,6 +818,7 @@ section .photo-placeholder.light {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
+  justify-content: center;
 }
 @media (max-width: 900px) {
   .grid-3-events {
@@ -944,6 +945,7 @@ section .photo-placeholder.light {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-top: 8px;
+  justify-content: center;
 }
 @media (max-width: 1000px) {
   .updates-grid {
