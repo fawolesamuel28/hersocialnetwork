@@ -1,3 +1,6 @@
+import { getEvents, getNews } from './supabase-init.js';
+
+// ── Mobile Nav ────────────────────────────────────────────────────
 const mobileToggle = document.querySelector(".mobile-toggle");
 const primaryNav = document.getElementById("primary-nav");
 
@@ -17,6 +20,7 @@ if (mobileToggle && primaryNav) {
   });
 }
 
+// ── Contact Tab Switcher ──────────────────────────────────────────
 function switchContactTab(type) {
   const tabEmail = document.getElementById("tab-email");
   const tabCall = document.getElementById("tab-call");
@@ -40,7 +44,7 @@ function switchContactTab(type) {
     if (messageLabel) messageLabel.textContent = "Preferred time & call details";
     if (messageInput) messageInput.placeholder = "Tell us your preferred day/time to call and any details...";
     if (submitText) submitText.textContent = "Request a call";
-    if (disclaimerBtn) disclaimerBtn.textContent = '“Request a call”';
+    if (disclaimerBtn) disclaimerBtn.textContent = '"Request a call"';
   } else {
     tabCall.classList.remove("active");
     tabCall.setAttribute("aria-selected", "false");
@@ -52,12 +56,14 @@ function switchContactTab(type) {
     if (messageLabel) messageLabel.textContent = "How can we help?";
     if (messageInput) messageInput.placeholder = "Tell us a little about how we can support you...";
     if (submitText) submitText.textContent = "Send message";
-    if (disclaimerBtn) disclaimerBtn.textContent = '“Send message”';
+    if (disclaimerBtn) disclaimerBtn.textContent = '"Send message"';
   }
 }
 
-import { getEvents, getNews } from './supabase-init.js';
+// expose globally for onclick in HTML
+window.switchContactTab = switchContactTab;
 
+// ── Render Events from Supabase ───────────────────────────────────
 async function renderLiveEvents() {
   const container = document.getElementById("events-container");
   if (!container) return;
@@ -72,19 +78,20 @@ async function renderLiveEvents() {
 
     container.innerHTML = events.map(evt => `
       <div class="event-card">
-        <span class="status-pill ${evt.statusclass || evt.statusClass || 'status-ongoing'}">${escapeSafe(evt.status)}</span>
+        <span class="status-pill ${evt.statusclass || 'status-ongoing'}">${escapeSafe(evt.status)}</span>
         <h3>${escapeSafe(evt.title)}</h3>
         <p>${escapeSafe(evt.desc)}</p>
         <p class="form-note">Date: ${escapeSafe(evt.date)}</p>
-        <a class="btn btn-outline" href="${evt.linkurl || evt.linkUrl || '#contact'}">${escapeSafe(evt.linktext || evt.linkText || 'Register interest')}</a>
+        <a class="btn btn-outline" href="${evt.linkurl || '#contact'}">${escapeSafe(evt.linktext || 'Register interest')}</a>
       </div>
     `).join('');
   } catch (e) {
-    console.error("Firebase load err", e);
-    container.innerHTML = `<p style="grid-column: 1/-1; color: red;">Error loading events.</p>`;
+    console.error("Error loading events:", e);
+    container.innerHTML = `<p style="grid-column: 1/-1; color: #6b7370; text-align: center;">No upcoming events scheduled right now. Check back soon!</p>`;
   }
 }
 
+// ── Render News from Supabase ─────────────────────────────────────
 async function renderLiveNews() {
   const container = document.getElementById("news-container");
   if (!container) return;
@@ -99,43 +106,45 @@ async function renderLiveNews() {
 
     container.innerHTML = news.map(item => `
       <article class="update-card">
-        ${item.image ? `<img src="${item.image}" alt="${escapeSafe(item.title)}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;" />` : `<div class="photo-placeholder">${escapeSafe(item.caption || 'Photo placeholder — community update')}</div>`}
+        ${item.image
+          ? `<img src="${item.image}" alt="${escapeSafe(item.title)}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;" />`
+          : `<div class="photo-placeholder">${escapeSafe(item.caption || 'Photo placeholder — community update')}</div>`}
         <span class="u-date">${escapeSafe(item.date)}</span>
         <h4>${escapeSafe(item.title)}</h4>
       </article>
     `).join('');
   } catch (e) {
-    console.error("Firebase load err", e);
-    container.innerHTML = `<p style="grid-column: 1/-1; color: red;">Error loading news.</p>`;
+    console.error("Error loading news:", e);
+    container.innerHTML = `<p style="grid-column: 1/-1; color: #6b7370; text-align: center;">No news stories published yet.</p>`;
   }
 }
 
 function escapeSafe(str) {
-  return (str || '').replace(/[&<>'"]/g, 
+  return (str || '').replace(/[&<>'"]/g,
     tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
   );
 }
 
+// ── Contact Form → Netlify Function ──────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
   renderLiveEvents();
   renderLiveNews();
-  
-  // ── Contact Form integration with Cloud Function ──
+
   const contactForm = document.getElementById("contactFm");
   if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      
+
       const submitBtn = contactForm.querySelector(".contact-submit-btn");
       const btnText = document.getElementById("submit-text");
       const originalText = btnText.textContent;
-      
+
       btnText.textContent = "Sending...";
       submitBtn.disabled = true;
-      
+
       const formData = new FormData(contactForm);
       const isCall = document.getElementById("tab-call").classList.contains("active");
-      
+
       const payload = {
         firstName: formData.get("firstName"),
         lastName: formData.get("lastName"),
@@ -146,7 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       try {
-        // Calling a Netlify Function we will create for email sending:
         const response = await fetch("/.netlify/functions/send-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -154,12 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         const result = await response.json();
-        
         if (!response.ok) throw new Error(result.error || "Failed to send");
-        
+
         alert("Thank you! Your message has been sent successfully.");
         contactForm.reset();
-        
+
       } catch (err) {
         console.error("Form error:", err);
         alert("Sorry, there was an error sending your message. Please try again or email us directly at info@hersocialnetworkcic.uk");
