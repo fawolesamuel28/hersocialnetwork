@@ -10,6 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Work+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Google Material Symbols Outlined -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <style>
       body {
@@ -17,24 +22,43 @@
         color: var(--near-black);
         min-height: 100vh;
       }
+
+      .material-symbols-outlined {
+        font-size: 1.2em;
+        vertical-align: -0.2em;
+        display: inline-block;
+        line-height: 1;
+      }
+
+      /* ── Admin Navigation ── */
       .admin-nav {
         background: var(--teal-dark);
         color: #fff;
-        padding: 18px 0;
+        padding: 16px 0;
         border-bottom: 3px solid var(--marigold);
+        position: sticky;
+        top: 0;
+        z-index: 100;
       }
       .admin-nav .wrap {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
       }
       .admin-logo {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         font-family: "Fraunces", serif;
         font-weight: 700;
-        font-size: 1.15rem;
+        font-size: 1.05rem;
+      }
+      .admin-nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
       .admin-view-site {
         color: var(--marigold);
@@ -43,59 +67,88 @@
         padding: 8px 16px;
         border: 1px solid var(--marigold);
         border-radius: 999px;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         transition: all 0.2s ease;
       }
       .admin-view-site:hover {
         background: var(--marigold);
         color: var(--near-black);
       }
+      .btn-logout {
+        background: transparent;
+        color: #e7c98f;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 8px 16px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+      }
+      .btn-logout:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      /* ── Dashboard Layout ── */
       .dashboard-container {
-        padding: 40px 0 80px;
+        padding: 32px 0 60px;
       }
       .admin-card {
         background: var(--white);
         border-radius: 20px;
-        padding: 36px;
+        padding: 32px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         border: 1px solid var(--line);
-        margin-bottom: 36px;
+        margin-bottom: 28px;
       }
       .admin-card h2 {
         margin-bottom: 8px;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
+
+      /* ── Tabs ── */
       .admin-tabs {
         display: flex;
-        gap: 10px;
-        margin-bottom: 28px;
+        gap: 8px;
+        margin-bottom: 24px;
         border-bottom: 2px solid var(--line);
         padding-bottom: 12px;
       }
       .admin-tab-btn {
-        padding: 10px 24px;
+        padding: 10px 20px;
         border: none;
         background: transparent;
         font-family: inherit;
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 0.95rem;
         color: #6b7370;
         cursor: pointer;
-        border-radius: 8px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         transition: all 0.2s ease;
       }
       .admin-tab-btn.active {
         background: var(--teal-dark);
         color: #fff;
       }
+
+      /* ── Form Inputs ── */
       .admin-form-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 18px;
-      }
-      @media (max-width: 768px) {
-        .admin-form-grid {
-          grid-template-columns: 1fr;
-        }
+        gap: 16px;
       }
       .admin-form-group {
         display: flex;
@@ -105,7 +158,8 @@
       }
       .admin-form-group label {
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
+        color: #38423e;
       }
       .admin-form-group input,
       .admin-form-group select,
@@ -114,8 +168,18 @@
         border-radius: 10px;
         border: 1px solid var(--line);
         font-family: inherit;
-        font-size: 0.95rem;
+        font-size: 1rem; /* 16px to avoid iOS auto-zoom */
+        width: 100%;
+        background: var(--white);
       }
+      .admin-form-group input:focus,
+      .admin-form-group select:focus,
+      .admin-form-group textarea:focus {
+        outline: none;
+        border-color: var(--marigold-dark);
+        box-shadow: 0 0 0 3px rgba(226, 153, 47, 0.25);
+      }
+
       .admin-btn {
         background: var(--marigold);
         color: var(--near-black);
@@ -124,30 +188,42 @@
         border: none;
         border-radius: 999px;
         cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 0.95rem;
         transition: transform 0.15s ease, background 0.15s ease;
       }
       .admin-btn:hover {
         background: var(--marigold-dark);
-        transform: translateY(-2px);
+        transform: translateY(-1px);
       }
+
       .admin-btn-danger {
         background: #e74c3c;
         color: #fff;
         border: none;
-        padding: 6px 14px;
-        border-radius: 6px;
+        padding: 8px 16px;
+        border-radius: 8px;
         cursor: pointer;
         font-size: 0.85rem;
         font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: background 0.15s ease;
       }
       .admin-btn-danger:hover {
         background: #c0392b;
       }
+
+      /* ── Item Lists ── */
       .item-list {
         display: flex;
         flex-direction: column;
-        gap: 14px;
-        margin-top: 24px;
+        gap: 12px;
+        margin-top: 20px;
       }
       .list-item-card {
         display: flex;
@@ -156,17 +232,27 @@
         padding: 16px 20px;
         background: var(--stone);
         border: 1px solid var(--line);
-        border-radius: 12px;
+        border-radius: 14px;
+        gap: 16px;
       }
       .list-item-info h4 {
         margin: 0 0 4px;
-        font-size: 1.05rem;
+        font-size: 1.02rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
       }
       .list-item-info p {
         margin: 0;
         font-size: 0.88rem;
         color: #5a6460;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
       }
+
       .toast {
         position: fixed;
         bottom: 24px;
@@ -174,40 +260,131 @@
         background: var(--teal-dark);
         color: #fff;
         padding: 14px 24px;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         display: none;
         z-index: 1000;
+        font-weight: 500;
         animation: fadeIn 0.3s ease;
       }
       @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
       }
+
+      /* ============================================================
+         MOBILE RESPONSIVE (max-width: 640px)
+         ============================================================ */
+      @media (max-width: 640px) {
+        .admin-nav {
+          padding: 12px 0;
+        }
+        .admin-nav .wrap {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 12px;
+        }
+        .admin-logo {
+          justify-content: center;
+          font-size: 0.98rem;
+        }
+        .admin-nav-actions {
+          justify-content: center;
+          width: 100%;
+        }
+        .admin-view-site, .btn-logout {
+          flex: 1;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .dashboard-container {
+          padding: 20px 0 40px;
+        }
+        .admin-card {
+          padding: 20px 16px;
+          border-radius: 16px;
+          margin-bottom: 20px;
+        }
+        .admin-card h2 {
+          font-size: 1.3rem;
+        }
+
+        .admin-tabs {
+          flex-direction: row;
+          gap: 6px;
+        }
+        .admin-tab-btn {
+          flex: 1;
+          justify-content: center;
+          padding: 10px 12px;
+          font-size: 0.85rem;
+          text-align: center;
+        }
+
+        .admin-form-grid {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .admin-btn {
+          width: 100%;
+          padding: 14px 20px;
+        }
+
+        .list-item-card {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 16px;
+          gap: 12px;
+        }
+        .list-item-card .admin-btn-danger {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .toast {
+          left: 16px;
+          right: 16px;
+          bottom: 16px;
+          text-align: center;
+        }
+
+        #login-screen {
+          padding: 16px;
+        }
+        #login-screen > div {
+          padding: 28px 20px !important;
+          border-radius: 18px !important;
+        }
+      }
     </style>
   </head>
   <body>
     <!-- LOGIN SCREEN -->
     <div id="login-screen" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--teal-dark);">
-      <div style="background: var(--white); padding: 48px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center;">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" style="margin-bottom: 24px;">
+      <div style="background: var(--white); padding: 44px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+        <svg width="44" height="44" viewBox="0 0 40 40" fill="none" aria-hidden="true" style="margin-bottom: 16px;">
           <circle cx="16" cy="20" r="11" stroke="#E2992F" stroke-width="2.4" />
           <circle cx="25" cy="20" r="11" stroke="#1B4B47" stroke-width="2.4" />
         </svg>
-        <h2 style="margin-bottom: 8px;">Admin Login</h2>
-        <p style="color: #6b7370; margin-bottom: 32px; font-size: 0.95rem;">Authorized personnel only.</p>
+        <h2 style="margin-bottom: 6px; font-size: 1.5rem;">Admin Login</h2>
+        <p style="color: #6b7370; margin-bottom: 28px; font-size: 0.92rem;">Authorized personnel only.</p>
         
         <form id="login-form">
           <div class="admin-form-group" style="text-align: left;">
             <label for="l-email">Email</label>
-            <input type="email" id="l-email" required />
+            <input type="email" id="l-email" placeholder="admin@hersocialnetworkcic.uk" required />
           </div>
           <div class="admin-form-group" style="text-align: left; margin-bottom: 24px;">
             <label for="l-password">Password</label>
-            <input type="password" id="l-password" required />
+            <input type="password" id="l-password" placeholder="••••••••" required />
           </div>
-          <button type="submit" class="admin-btn" style="width: 100%;">Sign in</button>
-          <div id="login-error" style="color: #e74c3c; font-size: 0.85rem; margin-top: 16px; display: none;">Invalid credentials</div>
+          <button type="submit" class="admin-btn" style="width: 100%;">
+            <span class="material-symbols-outlined">login</span> Sign in
+          </button>
+          <div id="login-error" style="color: #e74c3c; font-size: 0.85rem; margin-top: 16px; display: none;">
+            <span class="material-symbols-outlined" style="font-size:1.1em;">error</span> Invalid credentials
+          </div>
         </form>
       </div>
     </div>
@@ -217,133 +394,138 @@
       <nav class="admin-nav">
         <div class="wrap">
           <div class="admin-logo">
-            <svg width="30" height="30" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <circle cx="16" cy="20" r="11" stroke="#E2992F" stroke-width="2.4" />
               <circle cx="25" cy="20" r="11" stroke="#FFFFFF" stroke-width="2.4" />
             </svg>
-            <span>Her Social Network CIC — Admin Dashboard</span>
+            <span>Her Social Network CIC — Admin</span>
           </div>
-          <div style="display: flex; gap: 16px; align-items: center;">
-            <a href="index.html" class="admin-view-site">View Live Site &rarr;</a>
-            <button class="admin-btn-danger" style="background: transparent; color: #e7c98f; border: 1px solid rgba(255,255,255,0.2);" id="logout-btn">Log out</button>
+          <div class="admin-nav-actions">
+            <a href="index.html" class="admin-view-site">
+              <span class="material-symbols-outlined">open_in_new</span> Live Site
+            </a>
+            <button class="btn-logout" id="logout-btn">
+              <span class="material-symbols-outlined">logout</span> Log out
+            </button>
           </div>
         </div>
       </nav>
 
-    <main class="dashboard-container">
-      <div class="wrap">
-        <!-- TAB NAVIGATION -->
-        <div class="admin-tabs">
-          <button class="admin-tab-btn active" id="tab-btn-events" onclick="showDashboardTab('events')">
-            📅 Manage Events
-          </button>
-          <button class="admin-tab-btn" id="tab-btn-news" onclick="showDashboardTab('news')">
-            📰 Manage Community News
-          </button>
-        </div>
+      <main class="dashboard-container">
+        <div class="wrap">
+          <!-- TAB NAVIGATION -->
+          <div class="admin-tabs">
+            <button class="admin-tab-btn active" id="tab-btn-events" onclick="showDashboardTab('events')">
+              <span class="material-symbols-outlined">calendar_month</span> Events
+            </button>
+            <button class="admin-tab-btn" id="tab-btn-news" onclick="showDashboardTab('news')">
+              <span class="material-symbols-outlined">newspaper</span> News
+            </button>
+          </div>
 
-        <!-- EVENTS MANAGER PANEL -->
-        <div id="panel-events" class="admin-card">
-          <h2>Add New Event</h2>
-          <p style="color: #6b7370; margin-bottom: 24px;">
-            Add upcoming events or workshops to display in the <strong>"Get involved"</strong> section of the live site.
-          </p>
+          <!-- EVENTS MANAGER PANEL -->
+          <div id="panel-events" class="admin-card">
+            <h2><span class="material-symbols-outlined" style="color: var(--marigold-dark);">edit_calendar</span> Add New Event</h2>
+            <p style="color: #6b7370; margin-bottom: 24px; font-size: 0.92rem;">
+              Add upcoming events or workshops to display in the <strong>"Get involved"</strong> section of the live site.
+            </p>
 
-          <form id="add-event-form" onsubmit="handleAddEvent(event)">
-            <div class="admin-form-grid">
-              <div class="admin-form-group">
-                <label for="ev-title">Event Title</label>
-                <input type="text" id="ev-title" placeholder="e.g. Digital Confidence & Skills Workshop" required />
+            <form id="add-event-form" onsubmit="handleAddEvent(event)">
+              <div class="admin-form-grid">
+                <div class="admin-form-group">
+                  <label for="ev-title">Event Title</label>
+                  <input type="text" id="ev-title" placeholder="e.g. Digital Confidence & Skills Workshop" required />
+                </div>
+                <div class="admin-form-group">
+                  <label for="ev-status">Status Pill</label>
+                  <select id="ev-status">
+                    <option value="Ongoing|status-ongoing">Ongoing</option>
+                    <option value="Coming Soon|status-coming" selected>Coming Soon</option>
+                    <option value="Register Interest|status-interest">Register Interest</option>
+                  </select>
+                </div>
               </div>
-              <div class="admin-form-group">
-                <label for="ev-status">Status Pill</label>
-                <select id="ev-status">
-                  <option value="Ongoing|status-ongoing">Ongoing</option>
-                  <option value="Coming Soon|status-coming" selected>Coming Soon</option>
-                  <option value="Register Interest|status-interest">Register Interest</option>
-                </select>
+
+              <div class="admin-form-grid">
+                <div class="admin-form-group">
+                  <label for="ev-date">Date / Schedule Note</label>
+                  <input type="text" id="ev-date" placeholder="e.g. Saturday, 15th August 2026" required />
+                </div>
+                <div class="admin-form-group">
+                  <label for="ev-linktext">Button Text</label>
+                  <input type="text" id="ev-linktext" placeholder="e.g. Register interest" value="Register interest" />
+                </div>
               </div>
+
+              <div class="admin-form-group">
+                <label for="ev-desc">Event Description</label>
+                <textarea id="ev-desc" rows="3" placeholder="Brief summary of the workshop or gathering..." required></textarea>
+              </div>
+
+              <button type="submit" class="admin-btn">
+                <span class="material-symbols-outlined">add_circle</span> Add Event to Live Site
+              </button>
+            </form>
+
+            <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--line);" />
+
+            <h3 style="font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-outlined">list_alt</span> Existing Events
+            </h3>
+            <div class="item-list" id="events-admin-list">
+              <!-- Dynamically populated via JavaScript -->
             </div>
+          </div>
 
-            <div class="admin-form-grid">
-              <div class="admin-form-group">
-                <label for="ev-date">Date / Schedule Note</label>
-                <input type="text" id="ev-date" placeholder="e.g. Saturday, 15th August 2026" required />
+          <!-- COMMUNITY NEWS MANAGER PANEL -->
+          <div id="panel-news" class="admin-card" style="display: none;">
+            <h2><span class="material-symbols-outlined" style="color: var(--marigold-dark);">article</span> Add Community News Story</h2>
+            <p style="color: #6b7370; margin-bottom: 24px; font-size: 0.92rem;">
+              Post updates, member stories, and milestone announcements to the <strong>"Community News"</strong> section.
+            </p>
+
+            <form id="add-news-form" onsubmit="handleAddNews(event)">
+              <div class="admin-form-grid">
+                <div class="admin-form-group">
+                  <label for="news-title">Story Headline</label>
+                  <input type="text" id="news-title" placeholder="e.g. Her Social Network Celebrates 200 Members!" required />
+                </div>
+                <div class="admin-form-group">
+                  <label for="news-date">Publication Date</label>
+                  <input type="text" id="news-date" placeholder="e.g. August 2026" required />
+                </div>
               </div>
-              <div class="admin-form-group">
-                <label for="ev-linktext">Button Text</label>
-                <input type="text" id="ev-linktext" placeholder="e.g. Register interest" value="Register interest" />
+
+              <div class="admin-form-grid">
+                <div class="admin-form-group">
+                  <label for="news-caption">Image Placeholder / Tag</label>
+                  <input type="text" id="news-caption" placeholder="e.g. Photo placeholder — community celebration" required />
+                </div>
+                <div class="admin-form-group">
+                  <label for="news-image">Image URL (Optional)</label>
+                  <input type="url" id="news-image" placeholder="https://example.com/photo.jpg (leave blank for default card)" />
+                </div>
               </div>
+
+              <button type="submit" class="admin-btn">
+                <span class="material-symbols-outlined">publish</span> Publish News Story
+              </button>
+            </form>
+
+            <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--line);" />
+
+            <h3 style="font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-outlined">newspaper</span> Existing Community News Stories
+            </h3>
+            <div class="item-list" id="news-admin-list">
+              <!-- Dynamically populated via JavaScript -->
             </div>
-
-            <div class="admin-form-group">
-              <label for="ev-desc">Event Description</label>
-              <textarea id="ev-desc" rows="3" placeholder="Brief summary of the workshop or gathering..." required></textarea>
-            </div>
-
-            <button type="submit" class="admin-btn">➕ Add Event to Live Site</button>
-          </form>
-
-          <hr style="margin: 36px 0; border: none; border-top: 1px solid var(--line);" />
-
-          <h3>Existing Events</h3>
-          <div class="item-list" id="events-admin-list">
-            <!-- Dynamically populated via JavaScript -->
           </div>
         </div>
-
-        <!-- COMMUNITY NEWS MANAGER PANEL -->
-        <div id="panel-news" class="admin-card" style="display: none;">
-          <h2>Add Community News Story</h2>
-          <p style="color: #6b7370; margin-bottom: 24px;">
-            Post updates, member stories, and milestone announcements to the <strong>"Community News"</strong> section.
-          </p>
-
-          <form id="add-news-form" onsubmit="handleAddNews(event)">
-            <div class="admin-form-grid">
-              <div class="admin-form-group">
-                <label for="news-title">Story Headline</label>
-                <input type="text" id="news-title" placeholder="e.g. Her Social Network Celebrates 200 Members!" required />
-              </div>
-              <div class="admin-form-group">
-                <label for="news-date">Publication Date</label>
-                <input type="text" id="news-date" placeholder="e.g. August 2026" required />
-              </div>
-            </div>
-
-            <div class="admin-form-grid">
-              <div class="admin-form-group">
-                <label for="news-caption">Image Placeholder / Tag</label>
-                <input type="text" id="news-caption" placeholder="e.g. Photo placeholder — community celebration" required />
-              </div>
-              <div class="admin-form-group">
-                <label for="news-image">Image URL (Optional)</label>
-                <input type="url" id="news-image" placeholder="https://example.com/photo.jpg (leave blank for default card)" />
-              </div>
-            </div>
-
-            <button type="submit" class="admin-btn">➕ Publish News Story</button>
-          </form>
-
-          <hr style="margin: 36px 0; border: none; border-top: 1px solid var(--line);" />
-
-          <h3>Existing Community News Stories</h3>
-          <div class="item-list" id="news-admin-list">
-            <!-- Dynamically populated via JavaScript -->
-          </div>
-        </div>
-
-        <!-- ACTIONS BAR -->
-        <div style="text-align: right;">
-          <button type="button" class="admin-btn-danger" style="padding: 10px 20px; font-size: 0.9rem;" onclick="resetDashboardData()">
-            🔄 Reset to Default Demo Data
-          </button>
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
 
     <div id="toast" class="toast">Action completed successfully!</div>
-
 
     <script type="module">
       import { 
@@ -385,7 +567,7 @@
       logoutBtn.addEventListener('click', async () => {
         try {
           await logout();
-          window.location.reload(); // Hard reset for local bypass if used
+          window.location.reload();
         } catch(e) {}
       });
 
@@ -424,7 +606,7 @@
       window.handleAddEvent = async function(e) {
         e.preventDefault();
         const submitBtn = e.target.querySelector('button[type="submit"]');
-        submitBtn.textContent = 'Saving...';
+        submitBtn.innerHTML = '<span class="material-symbols-outlined">sync</span> Saving...';
         submitBtn.disabled = true;
 
         const title = document.getElementById('ev-title').value;
@@ -449,7 +631,7 @@
         } catch (err) {
           alert("Error saving event: " + err.message);
         } finally {
-          submitBtn.textContent = '➕ Add Event to Live Site';
+          submitBtn.innerHTML = '<span class="material-symbols-outlined">add_circle</span> Add Event to Live Site';
           submitBtn.disabled = false;
         }
       };
@@ -457,7 +639,7 @@
       window.handleAddNews = async function(e) {
         e.preventDefault();
         const submitBtn = e.target.querySelector('button[type="submit"]');
-        submitBtn.textContent = 'Publishing...';
+        submitBtn.innerHTML = '<span class="material-symbols-outlined">sync</span> Publishing...';
         submitBtn.disabled = true;
 
         const title = document.getElementById('news-title').value;
@@ -473,7 +655,7 @@
         } catch(err) {
           alert('Error saving news: ' + err.message);
         } finally {
-          submitBtn.textContent = '➕ Publish News Story';
+          submitBtn.innerHTML = '<span class="material-symbols-outlined">publish</span> Publish News Story';
           submitBtn.disabled = false;
         }
       };
@@ -505,7 +687,7 @@
         list.innerHTML = '<p style="color:#777; font-style:italic;">Loading events from database...</p>';
         try {
           const events = await getEvents();
-          if (events.length === 0) {
+          if (!events || events.length === 0) {
             list.innerHTML = '<p style="color:#777; font-style:italic;">No events added yet.</p>';
             return;
           }
@@ -513,13 +695,15 @@
             <div class="list-item-card">
               <div class="list-item-info">
                 <h4>${escapeHTML(item.title)} <span class="status-pill ${item.statusclass || item.statusClass}" style="font-size:0.75rem; padding: 2px 8px;">${item.status}</span></h4>
-                <p>📅 ${escapeHTML(item.date)} &bull; ${escapeHTML(item.desc)}</p>
+                <p><span class="material-symbols-outlined">event</span> ${escapeHTML(item.date)} &bull; ${escapeHTML(item.desc)}</p>
               </div>
-              <button type="button" class="admin-btn-danger" onclick="deleteEvent('${item.id}')">Delete</button>
+              <button type="button" class="admin-btn-danger" onclick="deleteEvent('${item.id}')">
+                <span class="material-symbols-outlined">delete</span> Delete
+              </button>
             </div>
           `).join('');
         } catch (e) {
-          list.innerHTML = '<p style="color:red;">Error loading from Firebase. Make sure Firestore is active.</p>';
+          list.innerHTML = '<p style="color:red;">Error loading events from database.</p>';
         }
       }
 
@@ -528,7 +712,7 @@
         list.innerHTML = '<p style="color:#777; font-style:italic;">Loading news from database...</p>';
         try {
           const news = await getNews();
-          if (news.length === 0) {
+          if (!news || news.length === 0) {
             list.innerHTML = '<p style="color:#777; font-style:italic;">No community news added yet.</p>';
             return;
           }
@@ -536,13 +720,15 @@
             <div class="list-item-card">
               <div class="list-item-info">
                 <h4>${escapeHTML(item.title)}</h4>
-                <p>🗓️ ${escapeHTML(item.date)} &bull; ${escapeHTML(item.caption)}</p>
+                <p><span class="material-symbols-outlined">calendar_today</span> ${escapeHTML(item.date)} &bull; ${escapeHTML(item.caption)}</p>
               </div>
-              <button type="button" class="admin-btn-danger" onclick="deleteNews('${item.id}')">Delete</button>
+              <button type="button" class="admin-btn-danger" onclick="deleteNews('${item.id}')">
+                <span class="material-symbols-outlined">delete</span> Delete
+              </button>
             </div>
           `).join('');
         } catch (e) {
-          list.innerHTML = '<p style="color:red;">Error loading from Firebase.</p>';
+          list.innerHTML = '<p style="color:red;">Error loading news from database.</p>';
         }
       }
 
