@@ -81,15 +81,7 @@ img {
   color: var(--plum);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   margin-bottom: 0.9em;
-}
-.eyebrow::before {
-  content: "";
-  width: 22px;
-  height: 2px;
-  background: var(--marigold);
-  display: inline-block;
 }
 
 .wrap {
