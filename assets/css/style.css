@@ -1834,3 +1834,6 @@ footer a:hover {
     font-size: 1.9rem;
   }
 }
+.new {
+  color: var(--marigold);
+}
