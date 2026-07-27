@@ -1,4 +1,4 @@
-import { getEvents, getNews } from './supabase-init.js';
+import { getEvents, getNews } from "./supabase-init.js";
 
 // ── Mobile Nav ────────────────────────────────────────────────────
 const mobileToggle = document.querySelector(".mobile-toggle");
@@ -41,8 +41,11 @@ function switchContactTab(type) {
 
     if (phoneGroup) phoneGroup.style.display = "block";
     if (phoneInput) phoneInput.required = true;
-    if (messageLabel) messageLabel.textContent = "Preferred time & call details";
-    if (messageInput) messageInput.placeholder = "Tell us your preferred day/time to call and any details...";
+    if (messageLabel)
+      messageLabel.textContent = "Preferred time & call details";
+    if (messageInput)
+      messageInput.placeholder =
+        "Tell us your preferred day/time to call and any details...";
     if (submitText) submitText.textContent = "Request a call";
     if (disclaimerBtn) disclaimerBtn.textContent = '"Request a call"';
   } else {
@@ -54,7 +57,9 @@ function switchContactTab(type) {
     if (phoneGroup) phoneGroup.style.display = "none";
     if (phoneInput) phoneInput.required = false;
     if (messageLabel) messageLabel.textContent = "How can we help?";
-    if (messageInput) messageInput.placeholder = "Tell us a little about how we can support you...";
+    if (messageInput)
+      messageInput.placeholder =
+        "Tell us a little about how we can support you...";
     if (submitText) submitText.textContent = "Send message";
     if (disclaimerBtn) disclaimerBtn.textContent = '"Send message"';
   }
@@ -76,15 +81,19 @@ async function renderLiveEvents() {
       return;
     }
 
-    container.innerHTML = events.map(evt => `
+    container.innerHTML = events
+      .map(
+        (evt) => `
       <div class="event-card">
-        <span class="status-pill ${evt.statusclass || 'status-ongoing'}">${escapeSafe(evt.status)}</span>
+        <span class="status-pill ${evt.statusclass || "status-ongoing"}">${escapeSafe(evt.status)}</span>
         <h3>${escapeSafe(evt.title)}</h3>
         <p>${escapeSafe(evt.desc)}</p>
         <p class="form-note">Date: ${escapeSafe(evt.date)}</p>
-        <a class="btn btn-outline" href="${evt.linkurl || '#contact'}">${escapeSafe(evt.linktext || 'Register interest')}</a>
+        <a class="btn btn-outline" href="${evt.linkurl || "#contact"}">${escapeSafe(evt.linktext || "Register interest")}</a>
       </div>
-    `).join('');
+    `,
+      )
+      .join("");
   } catch (e) {
     console.error("Error loading events:", e);
     container.innerHTML = `<p style="grid-column: 1/-1; color: #6b7370; text-align: center;">No upcoming events scheduled right now. Check back soon!</p>`;
@@ -104,15 +113,21 @@ async function renderLiveNews() {
       return;
     }
 
-    container.innerHTML = news.map(item => `
+    container.innerHTML = news
+      .map(
+        (item) => `
       <article class="update-card">
-        ${item.image
-          ? `<img src="${item.image}" alt="${escapeSafe(item.title)}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;" />`
-          : `<div class="photo-placeholder">${escapeSafe(item.caption || 'Photo placeholder — community update')}</div>`}
+        ${
+          item.image
+            ? `<img src="${item.image}" alt="${escapeSafe(item.title)}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;" />`
+            : `<div class="photo-placeholder">${escapeSafe(item.caption || "Photo placeholder — community update")}</div>`
+        }
         <span class="u-date">${escapeSafe(item.date)}</span>
         <h4>${escapeSafe(item.title)}</h4>
       </article>
-    `).join('');
+    `,
+      )
+      .join("");
   } catch (e) {
     console.error("Error loading news:", e);
     container.innerHTML = `<p style="grid-column: 1/-1; color: #6b7370; text-align: center;">No news stories published yet.</p>`;
@@ -120,8 +135,12 @@ async function renderLiveNews() {
 }
 
 function escapeSafe(str) {
-  return (str || '').replace(/[&<>'"]/g,
-    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+  return (str || "").replace(
+    /[&<>'"]/g,
+    (tag) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[
+        tag
+      ] || tag,
   );
 }
 
@@ -130,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderLiveEvents();
   renderLiveNews();
 
-  const contactForm = document.getElementById("contactFm");
+  const contactForm = document.getElementById("contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -143,22 +162,24 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.disabled = true;
 
       const formData = new FormData(contactForm);
-      const isCall = document.getElementById("tab-call").classList.contains("active");
+      const isCall = document
+        .getElementById("tab-call")
+        .classList.contains("active");
 
       const payload = {
-        firstName: formData.get("firstName"),
-        lastName: formData.get("lastName"),
+        first_name: formData.get("first_name") || formData.get("firstName"),
+        last_name: formData.get("last_name") || formData.get("lastName"),
         email: formData.get("email"),
-        phone: formData.get("phone") || "",
+        phone: formData.get("phone"),
         message: formData.get("message"),
-        type: isCall ? "call" : "email"
+        type: isCall ? "call" : "email",
       };
 
       try {
-        const response = await fetch("/.netlify/functions/send-email", {
+        const response = await fetch("/contact.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
         });
 
         const result = await response.json();
@@ -166,10 +187,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         alert("Thank you! Your message has been sent successfully.");
         contactForm.reset();
-
       } catch (err) {
         console.error("Form error:", err);
-        alert("Sorry, there was an error sending your message. Please try again or email us directly at info@hersocialnetworkcic.uk");
+        alert(
+          "Sorry, there was an error sending your message. Please try again or email us directly at PLACEHOLDER@hersocialnetworkcic.uk",
+        );
       } finally {
         btnText.textContent = originalText;
         submitBtn.disabled = false;

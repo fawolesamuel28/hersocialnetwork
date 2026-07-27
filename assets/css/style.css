@@ -1,12 +1,14 @@
 :root {
   --ink: #1e2b28;
-  --teal: #1b4b47;
-  --teal-dark: #123330;
+  --teal: #1d7772;
+  --teal-dark: #0f6b66;
   --plum: #5c3350;
   --marigold: #e2992f;
   --marigold-dark: #c57f1f;
-  --stone: #f2f1ec;
-  --stone-deep: #e9e7de;
+  --dusty-rose: #a84c52;
+  --warm-brown: #7a5c3f;
+  --stone: #ede9df;
+  --stone-deep: #e2dfd2;
   --cream-1: #f8f1e4;
   --cream-2: #f5e6d0;
   --near-black: #181f1c;
@@ -298,7 +300,7 @@ nav.primary a:hover {
   }
 }
 
-/* From Uiverse.io by dexter-st - Luton Badge Component */ 
+/* From Uiverse.io by dexter-st - Luton Badge Component */
 .btn-wrapper {
   --color: rgba(226, 153, 47, 0.12);
   --txt-color: var(--teal-dark);
@@ -365,7 +367,12 @@ nav.primary a:hover {
   content: "";
   position: absolute;
   inset: var(--point-size, 8px);
-  background: repeating-linear-gradient(45deg, var(--marigold), var(--cream-1) 15%, #fff 20%);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--marigold),
+    var(--cream-1) 15%,
+    #fff 20%
+  );
   mix-blend-mode: hard-light;
   background-size: 440%;
   transition: background-size 0.4s ease-in;
@@ -397,7 +404,8 @@ nav.primary a:hover {
   position: absolute;
   inset: 0 0%;
   z-index: 1;
-  border: var(--line-style, solid) var(--line-weight, 1px) var(--line-color, rgba(27, 75, 71, 0.2));
+  border: var(--line-style, solid) var(--line-weight, 1px)
+    var(--line-color, rgba(27, 75, 71, 0.2));
   background-color: var(--color, rgba(226, 153, 47, 0.12));
   backdrop-filter: blur(8px);
   border-radius: 999px;
@@ -414,7 +422,11 @@ nav.primary a:hover {
   border-radius: 50%;
   border: solid var(--line-weight, 1px) var(--line-color, rgba(27, 75, 71, 0.2));
   background-color: var(--point-color, var(--marigold));
-  background-image: radial-gradient(circle at 50% 120%, rgba(0, 0, 0, 0.2), #fff);
+  background-image: radial-gradient(
+    circle at 50% 120%,
+    rgba(0, 0, 0, 0.2),
+    #fff
+  );
 }
 .btn-wrapper .point.top {
   top: calc(var(--point-size, 8px) * -0.5);
@@ -523,7 +535,7 @@ nav.primary a:hover {
   padding-top: 64px;
   padding-bottom: 80px;
 }
-/* From Uiverse.io by vinodjangid07 */ 
+/* From Uiverse.io by vinodjangid07 */
 .button {
   display: inline-flex;
   align-items: center;
@@ -1117,7 +1129,9 @@ textarea {
   font-size: 0.95rem;
   background: var(--white);
   color: var(--near-black);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 input:focus,
 textarea:focus {
@@ -1576,21 +1590,40 @@ footer a:hover {
    Keeps desktop untouched; mobile flows top-to-bottom
    ============================================================ */
 @media (max-width: 640px) {
-
   /* ── Typography scale-down ── */
-  h1 { font-size: 2.1rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.15rem; }
+  h1 {
+    font-size: 2.1rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.15rem;
+  }
 
   /* ── Global spacing ── */
-  section { padding: 52px 0; }
-  .wrap { padding: 0 18px; }
+  section {
+    padding: 52px 0;
+  }
+  .wrap {
+    padding: 0 18px;
+  }
 
   /* ── Navigation ── */
-  header#top { padding: 10px 12px; }
-  .nav-row { padding: 6px 10px 6px 14px; gap: 8px; }
-  .logo { font-size: 0.9rem; gap: 6px; }
-  .logo small { display: none; }
+  header#top {
+    padding: 10px 12px;
+  }
+  .nav-row {
+    padding: 6px 10px 6px 14px;
+    gap: 8px;
+  }
+  .logo {
+    font-size: 0.9rem;
+    gap: 6px;
+  }
+  .logo small {
+    display: none;
+  }
   .nav-right .btn-primary {
     padding: 6px 14px;
     border-width: 3px;
@@ -1660,19 +1693,26 @@ footer a:hover {
   }
   .stat {
     border-left: none;
-    border-top: 2px solid rgba(255,255,255,0.2);
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
     padding-left: 0;
     padding-top: 16px;
   }
-  .stat:first-child { border-top: none; padding-top: 0; }
-  .stat .figure { font-size: 2.2rem; }
+  .stat:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+  .stat .figure {
+    font-size: 2.2rem;
+  }
 
   /* ── Events grid ── */
   .grid-3-events {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  .event-card { padding: 22px; }
+  .event-card {
+    padding: 22px;
+  }
 
   /* ── Programmes 4-col ── */
   .grid-4 {
@@ -1685,15 +1725,21 @@ footer a:hover {
     grid-template-columns: 1fr 1fr;
     gap: 14px;
   }
-  .update-card .photo-placeholder { aspect-ratio: 1 / 1; }
+  .update-card .photo-placeholder {
+    aspect-ratio: 1 / 1;
+  }
 
   /* ── Voices / quotes ── */
   .quote-grid {
     grid-template-columns: 1fr;
     gap: 14px;
   }
-  .quote-card { padding: 22px 20px; }
-  .quote-card p { font-size: 1.05rem; }
+  .quote-card {
+    padding: 22px 20px;
+  }
+  .quote-card p {
+    font-size: 1.05rem;
+  }
 
   /* ── CTA band ── */
   .cta-band {
@@ -1721,7 +1767,9 @@ footer a:hover {
   }
 
   /* ── Contact section ── */
-  .contact-section { padding: 52px 0; }
+  .contact-section {
+    padding: 52px 0;
+  }
   .contact-card {
     grid-template-columns: 1fr;
     border-radius: 20px;
@@ -1730,20 +1778,41 @@ footer a:hover {
     padding: 32px 22px;
     gap: 24px;
   }
-  .contact-right { padding: 28px 22px; }
-  .contact-left-content h2 { font-size: 1.6rem; }
-  .contact-quote-card { padding: 18px; }
-  .contact-quote-card .quote-text { font-size: 0.95rem; }
-  .contact-tabs { margin-bottom: 20px; }
-  .contact-submit-btn { padding: 14px 24px; }
-  .form-grid { grid-template-columns: 1fr; gap: 0; }
+  .contact-right {
+    padding: 28px 22px;
+  }
+  .contact-left-content h2 {
+    font-size: 1.6rem;
+  }
+  .contact-quote-card {
+    padding: 18px;
+  }
+  .contact-quote-card .quote-text {
+    font-size: 0.95rem;
+  }
+  .contact-tabs {
+    margin-bottom: 20px;
+  }
+  .contact-submit-btn {
+    padding: 14px 24px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 
   /* ── Split cards ── */
-  .split-card { grid-template-columns: 1fr; }
-  .split-card > div { padding: 28px 22px; }
+  .split-card {
+    grid-template-columns: 1fr;
+  }
+  .split-card > div {
+    padding: 28px 22px;
+  }
 
   /* ── Footer ── */
-  footer { padding: 48px 0 24px; }
+  footer {
+    padding: 48px 0 24px;
+  }
   .foot-grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -1758,6 +1827,10 @@ footer a:hover {
 
 /* ── Very small phones (≤380px) ── */
 @media (max-width: 380px) {
-  .updates-grid { grid-template-columns: 1fr; }
-  .hero-headline { font-size: 1.9rem; }
+  .updates-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-headline {
+    font-size: 1.9rem;
+  }
 }
