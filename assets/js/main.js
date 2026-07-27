@@ -1,5 +1,51 @@
 import { getEvents, getNews } from "./supabase-init.js";
 
+// ── Animate Statistics Counter ────────────────────────────────────
+function animateCounters() {
+  const figures = document.querySelectorAll(".stat .figure[data-count]");
+
+  if (figures.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (
+          entry.isIntersecting &&
+          !entry.target.classList.contains("counted")
+        ) {
+          const figure = entry.target;
+          const targetCount = parseInt(figure.getAttribute("data-count"), 10);
+          const duration = 2000; // Animation duration in ms
+          const steps = 60; // Number of animation frames
+          const increment = targetCount / steps;
+          const stepDuration = duration / steps;
+          let currentCount = 0;
+          let stepCount = 0;
+
+          const counter = setInterval(() => {
+            stepCount++;
+            currentCount += increment;
+
+            if (stepCount >= steps) {
+              figure.textContent = targetCount;
+              figure.classList.add("counted");
+              observer.unobserve(figure);
+              clearInterval(counter);
+            } else {
+              figure.textContent = Math.floor(currentCount);
+            }
+          }, stepDuration);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+
+  figures.forEach((figure) => {
+    observer.observe(figure);
+  });
+}
+
 // ── Mobile Nav ────────────────────────────────────────────────────
 const mobileToggle = document.querySelector(".mobile-toggle");
 const primaryNav = document.getElementById("primary-nav");
@@ -148,6 +194,7 @@ function escapeSafe(str) {
 document.addEventListener("DOMContentLoaded", () => {
   renderLiveEvents();
   renderLiveNews();
+  animateCounters();
 
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
