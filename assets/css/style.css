@@ -1237,7 +1237,7 @@ nav.primary a:hover {
         rgba(18, 51, 48, 0.91) 0%,
         rgba(18, 51, 48, 0.96) 100%
       ),
-      url("../images/gallery/WhatsApp Image 2026-07-26 at 18.38.25.jpeg") center/cover no-repeat;
+      url("../images/gallery/gallery-1.jpeg") center/cover no-repeat;
     color: var(--inverse-ink);
     padding: 48px;
     display: flex;
