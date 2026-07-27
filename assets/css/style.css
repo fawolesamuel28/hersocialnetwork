@@ -1206,8 +1206,8 @@ textarea:focus {
 }
 
 .contact-left {
-  background: var(--canvas);
-  color: var(--ink);
+  background: var(--block-navy);
+  color: var(--inverse-ink);
   padding: 48px;
   display: flex;
   flex-direction: column;
@@ -1224,18 +1224,18 @@ textarea:focus {
   font-family: "Fraunces", serif;
   font-weight: 600;
   font-size: 1.05rem;
-  color: #fff;
+  color: var(--inverse-ink);
 }
 
 .contact-left-content h2 {
-  color: #fff;
+  color: var(--inverse-ink);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   line-height: 1.2;
   margin-bottom: 0.5em;
 }
 
 .contact-left-content p {
-  color: var(--ink);
+  color: rgba(255,255,255,0.95);
   font-size: 1rem;
   line-height: 1.6;
   max-width: 44ch;
@@ -1243,8 +1243,8 @@ textarea:focus {
 }
 
 .contact-quote-card {
-  background: var(--surface-soft);
-  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 18px;
   padding: 24px;
   backdrop-filter: blur(10px);
@@ -1269,14 +1269,15 @@ textarea:focus {
   font-size: 1rem;
   font-style: italic;
   line-height: 1.5;
-  color: #fff;
+  color: rgba(255,255,255,0.98);
+  font-weight: 500;
 }
 
 .contact-quote-card .quote-author {
   display: block;
   font-style: normal;
   font-size: 0.82rem;
-  color: #c0ccc7;
+  color: rgba(255,255,255,0.9);
 }
 
 .contact-right {
