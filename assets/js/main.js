@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (err) {
         console.error("Form error:", err);
         alert(
-          "Sorry, there was an error sending your message. Please try again or email us directly at PLACEHOLDER@hersocialnetworkcic.uk",
+          "Sorry, there was an error sending your message. Please try again or email us directly at info@hersocialnetwork.co.uk",
         );
       } finally {
         btnText.textContent = originalText;
