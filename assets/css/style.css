@@ -818,7 +818,7 @@ section .photo-placeholder.light {
 }
 
 .stats-band {
-  background: var(--block-lime);
+  background: var(--block-coral);
   color: var(--ink);
 }
 .stats-band h2 {
@@ -1186,7 +1186,7 @@ textarea:focus {
    ========================================== */
 .contact-section {
   padding: 80px 0;
-  background: var(--block-mint);
+  background: var(--block-cream);
 }
 
 .contact-card {
