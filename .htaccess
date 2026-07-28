@@ -61,5 +61,5 @@ SetEnv MAIL_FROM   noreply@hersocialnetwork.co.uk
 SetEnv SMTP_HOST   hersocialnetwork.co.uk
 SetEnv SMTP_PORT   465
 SetEnv SMTP_USER   noreply@hersocialnetwork.co.uk
-SetEnv SMTP_PASS   REPLACE_WITH_EMAIL_PASSWORD
+SetEnv SMTP_PASS   SMTP_PASSWORD_SET_IN_CPANEL
 SetEnv SMTP_SECURE ssl
