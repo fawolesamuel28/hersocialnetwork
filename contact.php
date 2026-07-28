@@ -32,9 +32,13 @@ if (!$first || !$email || !$message) {
     exit;
 }
 
-// TODO: Replace with your real business address created in Namecheap hosting
-$TO_EMAIL = getenv('MAIL_TO') ?: 'info@hersocialnetwork.co.uk';
-$FROM_EMAIL = getenv('MAIL_FROM') ?: 'noreply@' . ($_SERVER['SERVER_NAME'] ?? 'hersocialnetworkcic.uk');
+// Helper to retrieve environment variable with $_SERVER / $_ENV fallback
+function get_setting($key, $default = '') {
+    return getenv($key) ?: ($_SERVER[$key] ?? ($_ENV[$key] ?? $default));
+}
+
+$TO_EMAIL = get_setting('MAIL_TO', 'info@hersocialnetwork.co.uk');
+$FROM_EMAIL = get_setting('MAIL_FROM', 'noreply@hersocialnetwork.co.uk');
 
 $subject = ($type === 'call') ? "[Website] Call Request from $first $last" : "[Website] Contact from $first $last";
 
@@ -48,33 +52,46 @@ $html .= "<p><strong>Type:</strong> " . htmlspecialchars(ucfirst($type)) . "</p>
 $html .= "<hr/><h3>Message</h3><p>" . nl2br(htmlspecialchars($message)) . "</p>";
 $html .= "</div></body></html>";
 
-// SMTP configuration (set these in hosting environment or cPanel) - recommended
-$smtpHost = getenv('SMTP_HOST') ?: '';
-$smtpPort = getenv('SMTP_PORT') ?: '';
-$smtpUser = getenv('SMTP_USER') ?: '';
-$smtpPass = getenv('SMTP_PASS') ?: '';
-$smtpSecure = getenv('SMTP_SECURE') ?: ''; // 'ssl' or 'tls' or empty
+// SMTP configuration (with default fallbacks for Namecheap / cPanel)
+$smtpHost = get_setting('SMTP_HOST', 'hersocialnetwork.co.uk');
+$smtpPort = get_setting('SMTP_PORT', '465');
+$smtpUser = get_setting('SMTP_USER', 'noreply@hersocialnetwork.co.uk');
+$smtpPass = get_setting('SMTP_PASS', 'HerSocialNetwrkcic2026');
+$smtpSecure = get_setting('SMTP_SECURE', 'ssl');
 
 $sent = false;
+$lastError = '';
 
 // Try PHPMailer via Composer autoload if present and SMTP credentials provided
 $composer = __DIR__ . '/vendor/autoload.php';
 if (file_exists($composer) && $smtpHost && $smtpUser && $smtpPass) {
-    require $composer;
+    require_once $composer;
     try {
         $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+        
         // SMTP settings
         $mail->isSMTP();
         $mail->Host = $smtpHost;
         $mail->SMTPAuth = true;
         $mail->Username = $smtpUser;
         $mail->Password = $smtpPass;
+        $mail->Timeout = 10; // Prevent hanging on network timeout
+        
         if (strtolower($smtpSecure) === 'ssl') {
             $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
         } elseif (strtolower($smtpSecure) === 'tls') {
             $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
         }
-        $mail->Port = $smtpPort ?: 587;
+        $mail->Port = intval($smtpPort) ?: 465;
+
+        // SSL options for local cPanel certificates
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
 
         $mail->setFrom($FROM_EMAIL, 'Her Social Network Website');
         $mail->addAddress($TO_EMAIL);
@@ -86,8 +103,8 @@ if (file_exists($composer) && $smtpHost && $smtpUser && $smtpPass) {
 
         $sent = $mail->send();
     } catch (Exception $e) {
-        // PHPMailer failed — fall back to mail()
-        error_log('PHPMailer error: ' . $e->getMessage());
+        $lastError = $e->getMessage();
+        error_log('PHPMailer error: ' . $lastError);
         $sent = false;
     }
 }
@@ -100,15 +117,18 @@ if (!$sent) {
     $headers[] = 'From: ' . $FROM_EMAIL;
     $headers[] = 'Reply-To: ' . $email;
 
-    $sent = mail($TO_EMAIL, $subject, $html, implode("\r\n", $headers));
+    $sent = @mail($TO_EMAIL, $subject, $html, implode("\r\n", $headers));
+    if (!$sent && empty($lastError)) {
+        $lastError = 'PHP mail() function returned false.';
+    }
 }
 
 if ($sent) {
     http_response_code(200);
-    echo json_encode(['success' => true, 'message' => 'Email sent']);
+    echo json_encode(['success' => true, 'message' => 'Email sent successfully']);
 } else {
     http_response_code(500);
-    echo json_encode(['error' => 'Failed to send email']);
+    echo json_encode(['error' => 'Failed to send email. Details: ' . $lastError]);
 }
 
 ?>
