@@ -1,0 +1,21 @@
+# Example .htaccess environment variables for contact.php
+# Copy the relevant SetEnv lines into your live site's .htaccess (public_html/.htaccess)
+# or configure equivalent environment variables via cPanel's Environment Variables UI.
+# IMPORTANT: Do NOT commit real credentials to Git. Replace example values with your real settings.
+
+# Mail recipient + from address
+SetEnv MAIL_TO you@yourdomain.com
+SetEnv MAIL_FROM noreply@yourdomain.com
+
+# SMTP settings (recommended)
+SetEnv SMTP_HOST smtp.yourdomain.com
+SetEnv SMTP_PORT 587
+SetEnv SMTP_USER you@yourdomain.com
+SetEnv SMTP_PASS your-smtp-password
+SetEnv SMTP_SECURE tls
+
+# Notes:
+# - Some hosts disallow SetEnv in .htaccess. If these lines cause a 500 error, remove them
+#   and either edit `contact.php` to hard-code the values (not recommended) or set the
+#   variables via cPanel's UI (if your host provides an "Environment Variables" option).
+# - After updating .htaccess or cPanel settings, test the endpoint with a curl POST.
