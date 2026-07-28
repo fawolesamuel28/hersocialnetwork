@@ -190,7 +190,7 @@ function escapeSafe(str) {
   );
 }
 
-// ── Contact Form → Netlify Function ──────────────────────────────
+// ── Contact Form handling and initialisation ─────────────────────
 document.addEventListener("DOMContentLoaded", () => {
   renderLiveEvents();
   renderLiveNews();
