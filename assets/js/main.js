@@ -253,4 +253,53 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // ── Newsletter Form handling ──
+  const newsletterForm = document.getElementById("newsletter-form");
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const btnText = document.getElementById("nl-btn-text");
+      const submitBtn = newsletterForm.querySelector(".newsletter-btn");
+      const emailInput = document.getElementById("nl-email");
+      const originalText = btnText.textContent;
+
+      btnText.textContent = "Subscribing...";
+      submitBtn.disabled = true;
+
+      const payload = {
+        email: emailInput.value.trim(),
+        type: "newsletter",
+      };
+
+      try {
+        const response = await fetch("/contact.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        let result = {};
+        try {
+          result = await response.json();
+        } catch (_) {
+          if (!response.ok) throw new Error("Server error (" + response.status + ")");
+        }
+
+        if (!response.ok) throw new Error(result.error || "Failed to subscribe");
+
+        alert("Thank you for subscribing to Her Social Network!");
+        newsletterForm.reset();
+      } catch (err) {
+        console.error("Newsletter error:", err);
+        alert(
+          "Sorry, there was an error subscribing. Please try again or email us directly at info@hersocialnetwork.co.uk",
+        );
+      } finally {
+        btnText.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
 });

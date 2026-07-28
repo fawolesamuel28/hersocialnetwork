@@ -24,12 +24,20 @@ $last = isset($data['last_name']) ? strip_tags(trim($data['last_name'])) : '';
 $email = isset($data['email']) ? filter_var(trim($data['email']), FILTER_VALIDATE_EMAIL) : false;
 $phone = isset($data['phone']) ? strip_tags(trim($data['phone'])) : '';
 $message = isset($data['message']) ? trim($data['message']) : '';
-$type = isset($data['type']) && $data['type'] === 'call' ? 'call' : 'email';
+$type = isset($data['type']) && in_array($data['type'], ['call', 'newsletter']) ? $data['type'] : 'email';
 
-if (!$first || !$email || !$message) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Missing required fields']);
-    exit;
+if ($type === 'newsletter') {
+    if (!$email) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Valid email address is required']);
+        exit;
+    }
+} else {
+    if (!$first || !$email || !$message) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Missing required fields']);
+        exit;
+    }
 }
 
 // Helper to retrieve environment variable with $_SERVER / $_ENV fallback
@@ -40,16 +48,28 @@ function get_setting($key, $default = '') {
 $TO_EMAIL = get_setting('MAIL_TO', 'info@hersocialnetwork.co.uk');
 $FROM_EMAIL = get_setting('MAIL_FROM', 'noreply@hersocialnetwork.co.uk');
 
-$subject = ($type === 'call') ? "[Website] Call Request from $first $last" : "[Website] Contact from $first $last";
+if ($type === 'newsletter') {
+    $subject = "[Website] New Newsletter Subscription";
+    $html = "<html><body>";
+    $html .= "<div style=\"font-family: Arial, sans-serif; max-width:600px; margin:0 auto; padding:20px;\">";
+    $html .= "<h2>🎉 New Newsletter Subscription</h2>";
+    $html .= "<p>A user has subscribed to the Her Social Network newsletter:</p>";
+    $html .= "<p style=\"font-size:16px;\"><strong>Subscriber Email:</strong> " . htmlspecialchars($email) . "</p>";
+    $html .= "<hr/><p style=\"font-size:12px; color:#666;\">Submitted via the website footer newsletter form.</p>";
+    $html .= "</div></body></html>";
+} else {
+    $subject = ($type === 'call') ? "[Website] Call Request from $first $last" : "[Website] Contact from $first $last";
 
-$html = "<html><body>";
-$html .= "<div style=\"font-family: Arial, sans-serif; max-width:600px; margin:0 auto;\">";
-$html .= "<h2>New contact form submission</h2>";
-$html .= "<p><strong>Name:</strong> " . htmlspecialchars($first . ' ' . $last) . "</p>";
-$html .= "<p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>";
-if ($phone) { $html .= "<p><strong>Phone:</strong> " . htmlspecialchars($phone) . "</p>"; }
-$html .= "<p><strong>Type:</strong> " . htmlspecialchars(ucfirst($type)) . "</p>";
-$html .= "<hr/><h3>Message</h3><p>" . nl2br(htmlspecialchars($message)) . "</p>";
+    $html = "<html><body>";
+    $html .= "<div style=\"font-family: Arial, sans-serif; max-width:600px; margin:0 auto;\">";
+    $html .= "<h2>New contact form submission</h2>";
+    $html .= "<p><strong>Name:</strong> " . htmlspecialchars($first . ' ' . $last) . "</p>";
+    $html .= "<p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>";
+    if ($phone) { $html .= "<p><strong>Phone:</strong> " . htmlspecialchars($phone) . "</p>"; }
+    $html .= "<p><strong>Type:</strong> " . htmlspecialchars(ucfirst($type)) . "</p>";
+    $html .= "<hr/><h3>Message</h3><p>" . nl2br(htmlspecialchars($message)) . "</p>";
+    $html .= "</div></body></html>";
+}
 $html .= "</div></body></html>";
 
 // SMTP configuration (with default fallbacks for Namecheap / cPanel)
