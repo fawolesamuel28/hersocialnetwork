@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self';"
+      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; connect-src 'self' https://*.supabase.co https://cdn.jsdelivr.net https://cloudflareinsights.com; base-uri 'self'; form-action 'self';"
     />
     <!-- NOTE: the CSP above is a best-effort meta-tag version. For real protection this
       same policy should also be set as an HTTP response header by whoever hosts the
       site (Netlify/Vercel/WordPress security plugin) - meta tags can't set every
      directive (e.g. frame-ancestors is ignored in meta and must be set server-side). -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="shortcut icon" href="favicon.png" />
 
     <title>
       Her Social Network CIC | Empowering Women in Luton &amp; Bedfordshire

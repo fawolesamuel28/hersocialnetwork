@@ -229,7 +229,15 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify(payload),
         });
 
-        const result = await response.json();
+        // Safely parse JSON — server may return HTML on PHP errors
+        let result = {};
+        try {
+          result = await response.json();
+        } catch (_) {
+          // Non-JSON response (e.g. PHP error page) — treat as failure
+          if (!response.ok) throw new Error("Server error (" + response.status + ")");
+        }
+
         if (!response.ok) throw new Error(result.error || "Failed to send");
 
         alert("Thank you! Your message has been sent successfully.");
