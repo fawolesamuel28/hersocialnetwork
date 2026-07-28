@@ -4,13 +4,19 @@
 
 ErrorDocument 404 /404.html
 
-# Redirect www to non-www (update domain once live)
+RewriteEngine On
 
-# RewriteEngine On
+# Map clean URLs (/admin -> admin.html)
+RewriteRule ^admin/?$ admin.html [L,QSA]
 
+# Serve extensionless .html files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# Redirect www to non-www
 # RewriteCond %{HTTP_HOST} ^www\.hersocialnetworkcic\.uk [NC]
-
-# RewriteRule ^(.\*)$ https://hersocialnetworkcic.uk/$1 [R=301,L]
+# RewriteRule ^(.*)$ https://hersocialnetworkcic.uk/$1 [R=301,L]
 
 # Security headers
 
