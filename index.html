@@ -108,14 +108,14 @@
               cx="16"
               cy="20"
               r="11"
-              stroke="#E2992F"
+              stroke="#D63384"
               stroke-width="2.4"
             />
             <circle
               cx="25"
               cy="20"
               r="11"
-              stroke="#1B4B47"
+              stroke="#7C3AED"
               stroke-width="2.4"
             />
           </svg>
@@ -360,7 +360,8 @@
         <div class="wrap">
           <p class="eyebrow">Our impact</p>
           <h2>Building momentum, one session at a time</h2>
-          <div class="grid-4-stats">
+          <!-- Desktop: Clean horizontal rolling counters -->
+          <div class="grid-4-stats desktop-stats">
             <div class="stat">
               <span class="figure" data-count="30">0</span>
               <span class="label">Women reached to date</span>
@@ -377,6 +378,46 @@
               <span class="figure" data-count="1">0</span>
               <span class="label">Major events hosted</span>
             </div>
+          </div>
+
+          <!-- Mobile: Uiverse.io 3D rotating card deck by ilkhoeri -->
+          <div class="wrap_card mobile-stats">
+            <div class="card">
+              <div class="content">
+                <span>30</span>
+                <div class="card-info"><strong>30+</strong><small>Women Reached</small></div>
+                <svg fill="none" viewBox="0 0 24 24" height="48" width="48" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="url(#gradient-full)" d="M15.2 1C12.4 1 9.9 2.5 8.5 4.8C8 4.7 7.5 4.6 7 4.6C3.7 4.6 1 7.3 1 10.6C1 13.9 3.7 16.6 7 16.6H15.2C19.5 16.6 23 13.1 23 8.8C23 4.5 19.5 1 15.2 1Z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="card">
+              <div class="content">
+                <span>750</span>
+                <div class="card-info"><strong>750</strong><small>Target (24 Months)</small></div>
+                <svg fill="none" viewBox="0 0 24 24" height="48" width="48" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="url(#gradient-full)" d="M12.2999 22.0001C9.59992 22.0001 6.99992 21.0001 4.99992 19.0001C0.999923 15.0001 0.999923 8.70009 4.89992 4.80009C6.29992 3.30009 8.19992 2.30009 10.2999 2.00009C10.6999 1.90009 11.0999 2.10009 11.2999 2.50009C11.4999 2.90009 11.4999 3.30009 11.1999 3.60009C8.99992 6.10009 9.19992 10.0001 11.5999 12.4001C13.9999 14.8001 17.7999 15.0001 20.2999 12.8001C20.5999 12.5001 21.0999 12.5001 21.3999 12.7001C21.7999 12.9001 21.9999 13.3001 21.8999 13.7001C21.5999 15.8001 20.5999 17.6001 19.1999 19.1001C17.2999 21.0001 14.7999 22.0001 12.2999 22.0001Z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="card">
+              <div class="content">
+                <span>2</span>
+                <div class="card-info"><strong>2</strong><small>Workshops Live</small></div>
+                <svg fill="none" viewBox="0 0 24 24" height="48" width="48" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="url(#gradient-full)" d="M8.49995 22.9999C8.19995 22.9999 7.89995 22.8999 7.59995 22.7999C6.79995 22.3999 6.39995 21.5999 6.59995 20.7999L7.79995 14.9999H5.99995C5.19995 14.9999 4.49995 14.4999 4.19995 13.7999C3.89995 13.0999 3.99995 12.2999 4.59995 11.7999L14.0999 1.6999C14.6999 1.0999 15.6999 0.899901 16.3999 1.2999C17.1999 1.6999 17.5999 2.4999 17.3999 3.2999L16.1999 9.0999H17.9999C18.7999 9.0999 19.4999 9.5999 19.7999 10.2999C20.0999 10.9999 19.9999 11.7999 19.3999 12.2999L9.89995 22.3999C9.49995 22.7999 8.99995 22.9999 8.49995 22.9999Z"></path>
+                </svg>
+              </div>
+            </div>
+            <svg style="visibility:hidden;width:0;height:0">
+              <defs>
+                <linearGradient id="gradient-full" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#ffffff"></stop>
+                  <stop offset="100%" stop-color="#ffffff00"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="uv-lines"><div class="uv-line"></div><div class="uv-line"></div></div>
           </div>
         </div>
       </section>

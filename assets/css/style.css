@@ -1,36 +1,62 @@
 :root {
-  --ink: #1e2b28;
-  --primary: #000000;
-  --canvas: #ffffff;
-  --surface-soft: #f7f7f5;
-  --hairline: #e6e6e6;
-  --hairline-soft: #f1f1f1;
-  --stone: #f7f5f0;
-  --stone-deep: #ece9df;
-  --cream-1: #f8f1e4;
-  --cream-2: #f5e6d0;
-  --block-lime: #dceeb1;
-  --block-lilac: #c5b0f4;
-  --block-cream: #f4ecd6;
-  --block-mint: #c8e6cd;
-  --block-pink: #efd4d4;
-  --block-coral: #f3c9b6;
-  --block-navy: #1f1d3d;
-  --accent-magenta: #ff3d8b;
-  --inverse-canvas: #1f1d3d;
-  --inverse-ink: #ffffff;
-  --on-inverse-soft: rgba(255, 255, 255, 0.16);
-  --teal: #1b4b47;
-  --teal-dark: #123330;
-  --plum: #5c3350;
-  --marigold: #e2992f;
-  --marigold-dark: #c57f1f;
-  --near-black: #181f1c;
+  /* ── Primary: Warm Rose (HSL 340° baseline) ── */
+  --rose-600: #D63384;
+  --rose-500: #E0459B;
+  --rose-400: #EC6EB5;
+  --rose-100: #FDE8F0;
+  --rose-50: #FFF5F8;
+
+  /* ── Secondary: Soft Orchid (HSL 280° — triadic complement) ── */
+  --orchid-600: #7C3AED;
+  --orchid-400: #A78BFA;
+  --orchid-100: #EDE9FE;
+
+  /* ── Accent: Champagne Gold (HSL 42° — triadic complement) ── */
+  --gold-500: #D4A017;
+  --gold-400: #E8B931;
+  --gold-100: #FEF3C7;
+
+  /* ── Warm Neutrals ── */
+  --ink: #2D1B2E;
+  --ink-soft: #5A4360;
+  --canvas: #FFFBFC;
+  --surface-soft: #FEF2F5;
+  --stone: #FEF2F5;
+  --stone-deep: #F9E4EB;
+  --cream-1: #FFF0F3;
+  --cream-2: #FADCE5;
+  --hairline: #F0D0DA;
+  --hairline-soft: #F8E6EC;
+
+  /* ── Semantic Mappings ── */
+  --primary: var(--rose-600);
+  --accent-magenta: var(--rose-500);
+  --teal: var(--rose-600);
+  --teal-dark: #2D1B2E;
+  --plum: var(--orchid-600);
+  --plum-dark: #1F0F2B;
+  --marigold: var(--gold-500);
+  --marigold-dark: #B8860B;
+  --near-black: #1A0E1C;
   --white: #ffffff;
   --line: var(--hairline);
+
+  /* ── Block Colors ── */
+  --block-lime: #EDE9FE;
+  --block-lilac: #F3E8FF;
+  --block-cream: var(--gold-100);
+  --block-mint: #E8F5E9;
+  --block-pink: var(--rose-100);
+  --block-coral: #FFE0E6;
+  --block-navy: #1F0F2B;
+  --inverse-canvas: #1F0F2B;
+  --inverse-ink: #ffffff;
+  --on-inverse-soft: rgba(255, 255, 255, 0.16);
+
+  /* ── Layout Tokens ── */
   --rounded-xs: 2px;
   --rounded-sm: 6px;
-  --rounded-md: 8px;
+  --rounded-md: 10px;
   --rounded-lg: 24px;
   --rounded-xl: 32px;
   --rounded-pill: 50px;
@@ -44,8 +70,6 @@
   --space-xl: 32px;
   --space-xxl: 48px;
   --space-section: 96px;
-  --white: #ffffff;
-  --line: #d9d6cb;
   --radius: 14px;
   --max: 1180px;
 }
@@ -787,6 +811,12 @@ nav.primary a:hover {
     height: 100%;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .prog-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(214, 51, 132, 0.35);
+    box-shadow: 0 16px 36px rgba(214, 51, 132, 0.1);
   }
   .prog-card .num {
     position: absolute;
@@ -795,7 +825,7 @@ nav.primary a:hover {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: var(--teal);
+    background: linear-gradient(135deg, var(--rose-600), var(--rose-400));
     color: #fff;
     font-family: "Fraunces", serif;
     font-size: 1.25rem;
@@ -805,32 +835,69 @@ nav.primary a:hover {
     justify-content: center;
     padding-top: 22px;
     padding-left: 8px;
-    box-shadow: 0 4px 16px rgba(27, 75, 71, 0.22);
+    box-shadow: 0 4px 16px rgba(214, 51, 132, 0.25);
+    transition: transform 0.3s ease;
+  }
+  .prog-card:hover .num {
+    transform: scale(1.08);
+  }
+  .prog-card:nth-child(1) .num {
+    background: linear-gradient(135deg, #D63384, #EC6EB5);
+  }
+  .prog-card:nth-child(2) .num {
+    background: linear-gradient(135deg, #D4A017, #E8B931);
+  }
+  .prog-card:nth-child(3) .num {
+    background: linear-gradient(135deg, #7C3AED, #A78BFA);
+  }
+  .prog-card:nth-child(4) .num {
+    background: linear-gradient(135deg, #E0459B, #EC6EB5);
   }
   .prog-card h3 {
     margin-bottom: 0.4em;
   }
   .prog-card p {
     font-size: 0.95rem;
-    color: #4a5450;
+    color: #5c485c;
     margin-bottom: 0;
   }
 
   .stats-band {
-    background: var(--teal-dark);
+    background: linear-gradient(160deg, var(--plum-dark) 0%, #0F0715 100%);
     color: var(--white);
     padding: var(--space-section) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-band::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(214, 51, 132, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .stats-band::after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+    pointer-events: none;
   }
   .stats-band h2 {
     color: var(--white);
     font-family: "Fraunces", serif;
   }
   .stats-band .eyebrow {
-    color: var(--marigold);
+    color: var(--gold-500);
     font-weight: 600;
-  }
-  .stats-band .eyebrow::before {
-    background: var(--marigold);
   }
   .grid-3 {
     display: grid;
@@ -855,22 +922,24 @@ nav.primary a:hover {
       gap: 28px;
     }
   }
+  /* ── Desktop / Mobile Stats Toggle ── */
+  .desktop-stats { display: grid; }
+  .mobile-stats { display: none !important; }
   @media (max-width: 640px) {
-    .grid-4-stats {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
+    .desktop-stats { display: none !important; }
+    .mobile-stats { display: flex !important; margin: 28px auto 0; }
   }
+
+  /* ── Desktop: Clean horizontal rolling counters ── */
   .stat {
-    text-align: left;
-    border-left: 2px solid rgba(226, 153, 47, 0.4);
-    padding-left: 24px;
+    text-align: center;
+    padding: 12px;
   }
   .stat .figure {
     font-family: "Fraunces", serif;
     font-size: 3rem;
     line-height: 1.1;
-    color: #f5ab35;
+    color: var(--gold-500);
     display: block;
     font-weight: 600;
     margin-bottom: 6px;
@@ -882,6 +951,203 @@ nav.primary a:hover {
     color: #ffffff;
     display: block;
   }
+
+  /* ══════════════════════════════════════════════════
+     Mobile: Uiverse.io 3D Rotating Card Deck
+     by ilkhoeri — adapted with feminine palette
+     ══════════════════════════════════════════════════ */
+  .wrap_card {
+    position: relative;
+    overflow: hidden;
+    width: var(--w-wrap-card);
+    height: calc(var(--h-card) / 1.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --w-card: 160px;
+    --h-card: 200px;
+    --rotate-card: 15deg;
+    --insetX-card: 28px;
+    --t-card: calc(var(--insetX-card) * 1.25);
+    --w-wrap-card: calc(var(--w-card) + calc(calc(var(--w-card) / 2) * 2));
+  }
+
+  .wrap_card .content {
+    background-color: rgba(31, 15, 43, 0.78);
+    overflow: hidden;
+    position: relative;
+    width: calc(100% - calc(var(--pd) * 2));
+    height: calc(100% - calc(var(--pd) * 2));
+    border-radius: calc(var(--round) - var(--pd));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+  }
+  .wrap_card .content > span {
+    font-size: 180px;
+    font-weight: 800;
+    line-height: 0.75;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 50% 0 0 50%;
+    transform: translate(-50%, -50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-stroke-width: 3px;
+    color: transparent;
+    opacity: 0;
+    background-image: linear-gradient(-45deg, #ffffff25 0%, #ffffffac 100%);
+    animation: uv-opacity 0s cubic-bezier(1, 0, 0, 1) forwards var(--delay) reverse;
+    pointer-events: none;
+  }
+  .card-info {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #fff;
+  }
+  .card-info strong {
+    font-family: "Fraunces", serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .card-info small {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+  }
+  .wrap_card .content > svg {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    opacity: 0.7;
+    animation: uv-opacity 8.4s cubic-bezier(1, 0, 0, 1) forwards calc(var(--delay) - 4.3s);
+    transform: translateX(-50%);
+  }
+
+  .wrap_card .card:nth-child(1) { --delay: 4.3s; }
+  .wrap_card .card:nth-child(2) { --delay: 7.3s; }
+  .wrap_card .card:nth-child(3) { --delay: 10.3s; }
+
+  @keyframes uv-opacity {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  .wrap_card .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    overflow: hidden;
+    animation: uv-rotating 9s cubic-bezier(0.75, 0, 0, 1.01) infinite 0s;
+    border-radius: var(--round);
+    background: var(--bg);
+    order: var(--order);
+    width: var(--w-card);
+    height: var(--h-card);
+    z-index: var(--z1);
+    top: var(--t1);
+    left: var(--l1);
+    right: var(--r1);
+    transform: var(--trans1);
+    --pd: 4px;
+    --round: 16px;
+    --x1: var(--insetX-card);
+    --x2: calc(var(--w-wrap-card) - calc(var(--w-card) + var(--insetX-card)));
+    --to-left: rotate(calc(var(--rotate-card) * -1));
+    --to-center: calc(var(--w-card) / 2);
+    --to-right: rotate(calc(var(--rotate-card) * 1));
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  /* Card 1 — Rose */
+  .wrap_card .card:nth-child(1) {
+    --order: 2;
+    --bg: radial-gradient(circle, rgba(236,110,181,1) 0%, rgba(214,51,132,1) 40%, rgba(120,20,70,1) 100%);
+    --z1: 2; --t1: 0; --l1: var(--to-center); --r1: var(--to-center);
+    --trans1: rotate(0);
+    --z2: 0; --t2: var(--t-card); --l2: var(--x1); --r2: var(--x2);
+    --trans2: var(--to-left);
+    --z3: 0; --t3: var(--t-card); --l3: var(--x2); --r3: var(--x1);
+    --trans3: var(--to-right);
+  }
+  /* Card 2 — Gold */
+  .wrap_card .card:nth-child(2) {
+    --order: 3;
+    --bg: radial-gradient(circle, rgba(232,185,49,1) 0%, rgba(212,160,23,1) 40%, rgba(140,100,5,1) 100%);
+    --z1: 0; --t1: var(--t-card); --l1: var(--x2); --r1: var(--x1);
+    --trans1: var(--to-right);
+    --z2: 2; --t2: 0; --l2: var(--to-center); --r2: var(--to-center);
+    --trans2: rotate(0);
+    --z3: 0; --t3: var(--t-card); --l3: var(--x1); --r3: var(--x2);
+    --trans3: var(--to-left);
+  }
+  /* Card 3 — Orchid */
+  .wrap_card .card:nth-child(3) {
+    --order: 1;
+    --bg: radial-gradient(circle, rgba(167,139,250,1) 0%, rgba(124,58,237,1) 40%, rgba(70,20,150,1) 100%);
+    --z1: 0; --t1: var(--t-card); --l1: var(--x1); --r1: var(--x2);
+    --trans1: var(--to-left);
+    --z2: 0; --t2: var(--t-card); --l2: var(--x2); --r2: var(--x1);
+    --trans2: var(--to-right);
+    --z3: 2; --t3: 0; --l3: var(--to-center); --r3: var(--to-center);
+    --trans3: rotate(0);
+  }
+
+  @keyframes uv-rotating {
+    0%, 99.99% {
+      z-index: var(--z1); top: var(--t1); left: var(--l1); right: var(--r1); transform: var(--trans1);
+    }
+    33.33% {
+      z-index: var(--z2); top: var(--t2); left: var(--l2); right: var(--r2); transform: var(--trans2);
+    }
+    66.66% {
+      z-index: var(--z3); top: var(--t3); left: var(--l3); right: var(--r3); transform: var(--trans3);
+    }
+  }
+
+  .uv-lines {
+    position: absolute;
+    inset: auto 0 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+  }
+  .uv-line {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .uv-line::before, .uv-line::after {
+    content: "";
+    position: absolute;
+    inset: auto;
+    background: linear-gradient(to right, var(--gradient-a-line, #0000), var(--gradient-b-line, #0000), var(--gradient-c-line, #0000));
+    filter: var(--blur-line);
+    width: var(--w-line);
+    height: var(--h-line);
+  }
+  .uv-line:nth-child(1)::before { --blur-line: blur(4px); --w-line: 100%; --h-line: 5px; --gradient-b-line: #D63384; }
+  .uv-line:nth-child(1)::after  { --w-line: 100%; --h-line: 1px; --gradient-b-line: #EC6EB5; }
+  .uv-line:nth-child(2)::before { --blur-line: blur(4px); --w-line: 50%;  --h-line: 5px; --gradient-b-line: #D4A017; }
+  .uv-line:nth-child(2)::after  { --w-line: 50%;  --h-line: 1px; --gradient-b-line: #7C3AED; }
   .placeholder-flag {
     font-size: 0.72rem;
     text-transform: uppercase;
@@ -1823,23 +2089,43 @@ nav.primary a:hover {
       gap: 20px;
     }
 
-    /* ── Stats band ── */
+    /* ── Mobile Glassmorphic 2x2 Impact Stats ── */
     .grid-3 {
       grid-template-columns: 1fr;
       gap: 20px;
     }
-    .stat {
-      border-left: none;
-      border-top: 2px solid rgba(226, 153, 47, 0.3);
-      padding-left: 0;
-      padding-top: 16px;
+    .grid-4-stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 28px;
     }
-    .stat:first-child {
-      border-top: none;
-      padding-top: 0;
+    .stat-card {
+      padding: 18px 14px;
+      border-radius: 16px;
+      gap: 6px;
     }
-    .stat .figure {
-      font-size: 2.2rem;
+    .stat-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      margin-bottom: 2px;
+    }
+    .stat-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+    .stat-card .figure {
+      font-size: 2.1rem;
+      line-height: 1.05;
+    }
+    .stat-card .label {
+      font-size: 0.8rem;
+      line-height: 1.25;
+    }
+    .stat-badge {
+      font-size: 0.62rem;
+      padding: 2px 7px;
+      margin-top: 4px;
     }
 
     /* ── Events grid ── */

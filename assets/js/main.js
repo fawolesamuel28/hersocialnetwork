@@ -2,7 +2,9 @@ import { getEvents, getNews } from "./supabase-init.js";
 
 // ── Animate Statistics Counter ────────────────────────────────────
 function animateCounters() {
-  const figures = document.querySelectorAll(".stat .figure[data-count]");
+  const figures = document.querySelectorAll(
+    ".stat-card .figure[data-count], .stat .figure[data-count]",
+  );
 
   if (figures.length === 0) return;
 
@@ -29,6 +31,9 @@ function animateCounters() {
             if (stepCount >= steps) {
               figure.textContent = targetCount;
               figure.classList.add("counted");
+              if (figure.parentElement) {
+                figure.parentElement.classList.add("counted");
+              }
               observer.unobserve(figure);
               clearInterval(counter);
             } else {
